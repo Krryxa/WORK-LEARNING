@@ -34,7 +34,9 @@ vue init webpack vue_project
 - vue-router 是Vue.js官方的路由插件，它和vue.js是深度集成的，适合用于构建单页面应用。vue的单页面应用是基于路由和组件的，路由用于设定访问路径，并将路径和组件映射起来。
 - 传统的页面应用，是用一些超链接来实现页面切换和跳转的。在vue-router单页面应用中，则是应该是路径之间的切换，也就是组件的切换
 1. 是路由和页面(组件)对应
+
 ![](https://github.com/Krryxa/WORK-LEARNING/blob/master/images/l_1.jpg)
+
 2. 通过router-link进行跳转
 ```html
 <router-link 
@@ -62,18 +64,18 @@ this.$route.params.id
 ```
 > 关于path路径加不加 / 的问题，加了/就是在根路径下跳转，不加就是在当前路径后面跳转，子页面，使用命名路由就不用管加不加 / 的问题了
 
-- 复用组件时，想对路由参数的变化作出响应的话，可以 watch（监测变化） $route 对象
+3. 复用组件时，想对路由参数的变化作出响应的话，可以 watch（监测变化） $route 对象
 ```javascript
 watch:{
-    //监听路由变化的时候
+    //监听相同路由下参数变化的时候，从而实现异步刷新
     '$route'(to,from){
-        //做一些路由变化的相应
-        this.loading = true;
-        this.getCateShop();
+        //做一些路由变化的响应
+        this.loading = true;//打开加载动画
+        this.getCateShop();//重新获取数据
     },
 },
 ```
-- 全局钩子，在main.js配置，可用作用户拦截
+4. 全局钩子，在main.js配置，可用作用户拦截
 ```javascript
 //在进入路由之前， 每一次都会执行此方法  全局钩子
 router.beforeEach(function(to,from,next){
@@ -99,3 +101,6 @@ router.beforeEach(function(to,from,next){
 ```
 
 ## vuex
+[内容过多，点击观看](https://github.com/Krryxa/WORK-LEARNING/blob/master/learn_vuex.md)
+
+## vue-resource
