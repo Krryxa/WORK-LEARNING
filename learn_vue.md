@@ -4,7 +4,7 @@
         
     版本：vue 2.x
 
-## vue ?
+## vue ？
 - Vue是一套用于构建用户界面的渐进式框架。与其它大型框架不同的是，Vue 被设计为可以自底向上逐层应用。
 
 ## Vue核心思想
@@ -104,3 +104,174 @@ router.beforeEach(function(to,from,next){
 [内容过多，点击观看](https://github.com/Krryxa/WORK-LEARNING/blob/master/learn_vuex.md)
 
 ## vue-resource
+- vue-resource？
+        
+    >Vue.js的一款插件，它可以通过XMLHttpRequest或JSONP发起请求并处理响应。也就是说，$.ajax能做的事情，vue-resource插件一样也能做到，而且vue-resource的API更为简洁。另外，vue-resource还提供了非常有用的inteceptor功能，使用inteceptor可以在请求前和请求后附加一些行为，比如使用inteceptor在ajax请求时显示loading界面。
+
+- vue-resource特点
+1. 体积小
+    >vue-resource非常小巧，在压缩以后只有大约12KB，服务端启用gzip压缩后只有4.5KB大小，这远比jQuery的体积要小得多。
+2. 支持主流的浏览器
+    >和Vue.js一样，vue-resource除了不支持IE 9以下的浏览器，其他主流的浏览器都支持。
+3. 支持Promise API和URI Templates
+    >Promise是ES6的特性，Promise的中文含义为“先知”，Promise对象用于异步计算。
+URI Templates表示URI模板，有些类似于ASP.NET MVC的路由模板。
+4. 支持拦截器
+    >拦截器是全局的，拦截器可以在请求发送前和发送请求后做一些处理。拦截器在一些场景下会非常有用，比如请求发送前在headers中设置access_token，或者在请求失败时，提供共通的处理方式。
+
+```JavaScript
+// 基于全局Vue对象使用http
+Vue.http.get('/someUrl', [options]).then(successCallback, errorCallback);
+Vue.http.post('/someUrl', [body], [options]).then(successCallback, errorCallback);
+ 
+// 在一个Vue实例内使用$http
+this.$http.get('/someUrl', [options]).then(successCallback, errorCallback);
+this.$http.post('/someUrl', [body], [options]).then(successCallback, errorCallback);
+```
+- vue-resource的请求API是按照REST风格设计的，它提供了7种请求API：
+```javascript
+get(url, [options])
+head(url, [options])
+delete(url, [options])
+jsonp(url, [options])
+post(url, [body], [options])
+put(url, [body], [options])
+patch(url, [body], [options])
+```
+- options对象
+![](https://github.com/Krryxa/WORK-LEARNING/blob/master/images/l_2.jpg)
+
+```JavaScript
+this.$http.get('/someUrl', [options]).then((response) => {
+  // 响应成功回调
+}, (response) => {
+  // 响应错误回调
+});
+```
+- inteceptor
+    > 拦截器可以在请求发送前和发送请求后做一些处理，比如加载动画
+![](https://github.com/Krryxa/WORK-LEARNING/blob/master/images/l_3.jpg)
+```JavaScript
+Vue.http.interceptors.push((request, next) => {
+        // ...
+        // 请求发送前的处理逻辑，比如加载动画
+        // ...
+    next((response) => {
+        // ...
+        // 请求发送后的处理逻辑
+        // ...
+        // 根据请求的状态，response参数会返回给successCallback或errorCallback
+        return response
+    })
+})
+```
+
+## axios
+- 基于 Promise 的 HTTP 请求客户端，可同时在浏览器和 Node.js 中使用
+- vue2.0之后，就不再对vue-resource更新，而是推荐使用axios，本项目也是使用axios
+
+- 功能特性
+1. 在浏览器中发送 XMLHttpRequests 请求
+2. 在 node.js 中发送 http请求
+3. 支持 Promise API
+4. 拦截请求和响应
+5. 转换请求和响应数据
+6. 取消请求
+7. 自动转换 JSON 数据
+8. 客户端支持保护安全免受 CSRF/XSRF（跨站请求伪造） 攻击
+- 安装 axios
+```
+$ npm install axios
+```
+- 在要使用的文件中引入axios
+```
+import axios from 'axios'
+```
+- get请求
+```JavaScript
+// 向具有指定ID的用户发出请求
+axios.get('/user?ID=12345').then( (response)=> {
+    console.log(response);
+}).catch( (error)=> {
+    console.log(error);
+});
+```
+- post请求
+```JavaScript
+axios.post('/user', {
+    firstName: 'Fred',
+    lastName: 'Flintstone'
+}).then( (response)=> {
+    console.log(response);
+}).catch( (error)=> {
+    console.log(error);
+});
+```
+- 执行多个并发请求
+```JavaScript
+// 根据id获取某一条商品数据
+let getDetail = (id)=>{
+    return axios.get(`/detail?bid=${id}`);
+}
+
+//检测登录的用户是否将此商品加入购物车
+let detectCar = (shopId,userId)=>{
+    return axios.get(`/detectCar?shopId=${shopId}&userId=${userId}`);
+}
+
+// 获取一条商品数据、并且检测是否加入购物车
+let getDeAll = (shopId,userId)=>{
+    axios.all([
+        getDetail(shopId),
+        detectCar(shopId,userId)
+    ]).then(axios.spread((resDetail, resCar)=>{
+        //两个请求现已完成
+        //打印两个请求的响应值
+        console.log(resDetail);
+        console.log(resCar);
+    }));
+}
+```
+- 实例的方法
+```javascript
+axios#request(config)
+axios#get(url [,config])
+axios#delete(url [,config])
+axios#head(url [,config])
+axios#post(url [,data [,config]])
+axios#put(url [,data [,config]])
+axios#patch(url [,data [,config]])
+```
+- 请求配置：只有url是必需的，如果未指定方法，请求将默认为GET
+
+- 可配置全局axios默认值
+```javascript
+//默认的请求路径
+axios.defaults.baseURL = 'http://localhost:3000';
+axios.defaults.headers.common['Authorization'] = AUTH_TOKEN;
+axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
+```
+
+- 拦截器
+    > 在请求或响应被 then 或 catch 处理前拦截
+```javascript
+// 添加请求拦截器
+axios.interceptors.request.use( (config)=> {
+    // 在发送请求之前做些什么
+    return config;
+  }, (error)=> {
+    // 对请求错误做些什么
+    return Promise.reject(error);
+  });
+
+// 添加响应拦截器
+axios.interceptors.response.use( (response)=> {
+    // 对响应数据做点什么
+    return response;
+  }, (error)=> {
+    // 对响应错误做点什么
+    return Promise.reject(error);
+  });
+```
+
+> 我的做法，将axios请求放在单独一个文件作为api，导出每一个请求的方法，在有需要的组件中导入这个api的某个方法，也是实现组件化的一点
