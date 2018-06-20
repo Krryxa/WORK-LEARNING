@@ -1,5 +1,13 @@
-# Object.assign
+# Object.assign  const
 
+## const 
+```javascript
+const arr = [1,2,3];
+arr.push(4); // 正确执行，因为引用地址没有改变
+arr = []; // 错误，因为地址改变了，重新赋值，报错
+```
+
+## Object.assign
 - 这里也涉及到一个深拷贝和浅拷贝的概念。
 - javascript中存储对象都是存地址的.
 - 浅拷贝是都指向同一块内存区块，地址相同
