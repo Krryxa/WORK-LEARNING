@@ -1,6 +1,6 @@
 # 题目
 
-![](https://github.com/Krryxa/WORK-LEARNING/tree/master/images/test.png)
+![](https://github.com/Krryxa/WORK-LEARNING/blob/master/images/test.png)
 
 1. 
 ```javascript
