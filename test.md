@@ -30,6 +30,28 @@ function fnc(a) {
 ```
 
 3. 
+```javascript
+function collect(dom) {
+  let b_objs = [];
+  let len = 0;
+  for (let i=0; i < dom.length; i++) {
+      let obj = dom[i].tagName;
+      if (obj === 'body' || obj === 'BODY') {
+          len = i + 1;
+          break;
+      }
+  }
+  for (let j=len;j < dom.length;j++) {
+      b_objs.push(dom[j]);
+  }
+  console.log(b_objs);
+}
+collect(document.all);
+
+console.log(document.body.querySelectorAll('*'));
+
+// let dom = document.all;
+```
 
 ## querySelector/querySelectorAll 与 getElementsBy 的区别解析
 - javascript 中获取元素有两个方法 querySelector/querySelectorAll 与 getElementsBy，但这两种方法却存在这细小的区别, 这个区别有时就会对我们所写的程序造成巨大的影响。
