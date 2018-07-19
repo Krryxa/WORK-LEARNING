@@ -44,3 +44,29 @@ for (let va of arr) {
 }
 console.log(new Date() - nowTime, 'es6');
 ```
+
+## 数组的深拷贝
+```javascript
+// Array.from()
+var arr1 = [1,2,3];
+var arr2 = Array.from(arr1);
+// 数组尾部添加
+arr2.push(100);
+console.log(arr1,arr2); // [1, 2, 3] [1, 2, 3, 100]
+
+// [...arr] 使用这个也可以拼接数组，但是不推荐，效率太低
+var arr1 = [1,2,3];
+// 超引用拷贝数组
+var arr2 = [...arr1];
+// 数组尾部添加
+arr2.push(1000);
+console.log(arr1,arr2); // [1, 2, 3] [1, 2, 3, 1000]
+
+function show(...args){
+// 此时这个形式参数就是一个数组，我们可以直接push东西进来，如下
+args.push(5);
+console.log(args);
+}
+// 调用
+show(1,2,3,4); // [1, 2, 3, 4, 5]
+```
