@@ -103,7 +103,7 @@ router.beforeEach(function(to,from,next){
 ## vuex
 [内容过多，点击观看](https://github.com/Krryxa/WORK-LEARNING/blob/master/learn_vuex.md)
 
-## vue-resource
+## vue-resource (不推荐使用)
 - vue-resource？
         
     >Vue.js的一款插件，它可以通过XMLHttpRequest或JSONP发起请求并处理响应。也就是说，$.ajax能做的事情，vue-resource插件一样也能做到，而且vue-resource的API更为简洁。另外，vue-resource还提供了非常有用的inteceptor功能，使用inteceptor可以在请求前和请求后附加一些行为，比如使用inteceptor在ajax请求时显示loading界面。
@@ -273,5 +273,7 @@ axios.interceptors.response.use( (response)=> {
     return Promise.reject(error);
   });
 ```
+
+## 页面及 MVC 结构
 
 > 我的做法，将axios请求放在单独一个文件作为api，导出每一个请求的方法，在有需要的组件中导入这个api的某个方法，也是实现组件化的一点
