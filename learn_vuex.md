@@ -167,9 +167,24 @@ import * as Types from './mutations-type.js';
  * 这样取出c来才是b:1
  */
 const mutations = {
-    [Types.SETUSERNAME](state,username){ //state是自动放入的，默认指的是当前的state
+    [Types.SETUSERNAME](state, username){ //state是自动放入的，默认指的是当前的state
         state.username = username;
     },
 };
 export default mutations;
+```
+
+## 页面监听vuex中state的变化：
+- 将vuex中的某个state作为计算属性，在watch中监听即可
+``` javascript
+watch: {
+  order (newVal, oldVal) {
+    console.log(newVal, oldVal);
+  },
+},
+computed: {
+  order () {
+    return this.$store.state.order;
+  },
+},
 ```
