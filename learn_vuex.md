@@ -33,16 +33,17 @@ Vuex.Store({
 - 定义mutations
 ```javascript
 const mutations = {
-  mutationName(state) {
+  mutationName(state, newVal) {
     //在这里改变state中的数据
+    state.newVal = newVal;
   }
 }
 ```
-- 在组件中触发：
+- 在组件中触发：(有命名空间的modules就加上命名空间)
 ```javascript
 methods: {
     handleClick() {
-      this.$store.commit('mutationName')
+      this.$store.commit('mutationName', newVal)
     }
 }
 ```
@@ -64,18 +65,18 @@ export default {
 - 定义Actions
 ```javascript
 const actions = {
-  actionName({ commit }) {
+  actionName({ commit }, newVal) {
     //dosomething
-    commit('mutationName')
+    commit('mutationName', newVal)
   }
 }
 ```
 - 在组件中触发：
 ```javascript
 methods: {
-    handleClick() {
-      this.$store.dispatch(actionName)
-    }
+  handleClick() {
+    this.$store.dispatch('actionName', newVal);
+  }
 }
 ```
 - 其辅助函数是mapActions，与mapMutations类似，也是绑定在组件的methods上的。
@@ -121,6 +122,8 @@ const store = Vuex.Store({
 ```
 
 ## 仔细看看vuex要配置的内容可能挺多，但是一般开发中把一些配置单独放到一个文件中，都放到store文件夹中，便于管理和维护
+- 项目划分得更细，vuex中越来越庞大的数据，就应该考虑 modules 和命名空间的问题
+- 具体可看官方文档：[链接地址](https://vuex.vuejs.org/zh/guide/modules.html)
 1. index.js --> vuex的主要配置文件
 ```javascript
 import Vue from 'vue';
@@ -154,7 +157,7 @@ export const SETUSERNAME = 'SETUSERNAME';
 ```
 3. mutations.js --> mutations方法
 ```javascript
-//全部导出
+//全部导入
 import * as Types from './mutations-type.js';
 /**
  * 这种取值方式[]
