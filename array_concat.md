@@ -8,17 +8,26 @@
 
 倒是有几种方法：
 ```javascript
-// 模拟：执行（内含 10000 子数组 + 子数组有 13 个元素）的数组
+// 模拟：执行内含 10000 子数组 + 子数组有 13 个元素的数组
 let arr = [];
 
 for (let i = 0; i < 10000; i++) {
   arr.push([Math.random()*100, Math.random()*100, Math.random()*100, Math.random()*100, Math.random()*100, Math.random()*100, Math.random()*100, Math.random()*100, Math.random()*100, Math.random()*100, Math.random()*100, Math.random()*100, Math.random()*100]);
 }
 
-// 1. 双重循环 push，（推荐，速度最快）
-// 用时：0.018 s
+// 1. reduce + concat，（数组元素较短时推荐，写法最简便）
+// 用时：3.4s
 let newArr = [];
 let nowTime = new Date();
+// 默认指定第一次的prev为[]
+let arrs = arr.reduce((arr, cur) => arr.concat(cur), []);
+console.log(new Date() - nowTime, 'reduce');
+
+
+// 2. 双重循环push，（数组元素较长时推荐，速度最快）
+// 用时：0.018 s
+newArr = [];
+nowTime = new Date();
 for (let va of arr) {
   for (let vq of va) {
     newArr.push(vq);
@@ -26,7 +35,7 @@ for (let va of arr) {
 }
 console.log(new Date() - nowTime, 'for');
 
-// 2. concat
+// 3. concat
 // 用时：3.4 s
 newArr = [];
 nowTime = new Date();
@@ -35,7 +44,7 @@ for (let va of arr) {
 }
 console.log(new Date() - nowTime, 'concat');
 
-// 3. es6 的深拷贝数组 （速度最慢）
+// 4. es6 的深拷贝数组 （速度最慢）
 // 用时：34 s
 newArr = [];
 nowTime = new Date();
