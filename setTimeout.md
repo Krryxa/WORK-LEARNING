@@ -11,7 +11,7 @@ for(let i in fuc) {
 }
 ```
 - 控制台打印的情况
-![](https://github.com/Krryxa/WORK-LEARNING/blob/master/images/l_1.jpg)
+![](https://github.com/Krryxa/WORK-LEARNING/blob/master/images/p_4.jpg)
 
 - 虽然setTimeout函数在每次循环的开始就调用了，但是却被放到循环结束才执行，循环结束，i=3,接连打印了3次3。
 - 这里涉及到javascript单线程执行的问题：javascript在浏览器中是单线程执行的，必须在完成当前任务后才执行队列中的下一个任务。
