@@ -10,7 +10,7 @@ for(let i in fuc) {
   console.log(fuc[i]);
 }
 ```
-- 控制台打印的情况
+- 控制台打印的情况 <br/>
 ![](https://github.com/Krryxa/WORK-LEARNING/blob/master/images/p_4.png)
 
 - 虽然setTimeout函数在每次循环的开始就调用了，但是却被放到循环结束才执行，循环结束，i=3,接连打印了3次3。
