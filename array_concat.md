@@ -79,3 +79,9 @@ console.log(args);
 // 调用
 show(1,2,3,4); // [1, 2, 3, 4, 5]
 ```
+
+## 多维数组
+```javascript
+const flattenDeep = (arr) => Array.isArray(arr) ? arr.reduce( (a, b) => [...flattenDeep(a), ...flattenDeep(b)] , []) : [arr];
+flattenDeep([1, [[2], [3, [4]], 5]]);
+```
