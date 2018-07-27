@@ -2,12 +2,11 @@
 
 ## 问题
 ```javascript
-let fuc = [1,2,3];
-for(let i in fuc) {
+for(var val of [1,2,3]){
   setTimeout(() => {
-    console.log(fuc[i])
+    console.log(val)
   },0);
-  console.log(fuc[i]);
+  console.log(val);
 }
 ```
 - 控制台打印的情况 <br/>
@@ -20,3 +19,6 @@ for(let i in fuc) {
 - 由此，可以知道虽然设置为0秒后执行任务，实际上是大于0秒才执行的，
 - 用处就在于我们可以改变任务的执行顺序！因为浏览器会在执行完当前任务队列中的任务，再执行setTimeout队列中积累的的任务。
 - 通过设置任务在延迟到0s后执行，就能改变任务执行的先后顺序，延迟该任务发生，使之异步执行。
+
+## 如果将上例的 var 改成 let，打印的就是 1 2 3 1 2 3
+- 原因就是 let 是块级作用域，在 setTimeout 这个执行环境中，第一次循环的 val 是 1，第二次 2，第三次 3，后面的 val 无法覆盖前面 val，（块级作用域）
