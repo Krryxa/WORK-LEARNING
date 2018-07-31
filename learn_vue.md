@@ -274,6 +274,25 @@ axios.interceptors.response.use( (response)=> {
   });
 ```
 
+## 如何判断所有请求加载完毕
+```javascript
+let reqNum = 0
+axios.interceptors.request.use(function (config) {  //  在请求发出之前进行一些操作，每次发出请求就reqNum++
+  reqNum++
+  _bus.$emit('showloading')
+  return config
+}
+
+axios.interceptors.response.use(response => {        // 接受请求后reqNum--，判断请求所有请求是否完成
+  reqNum--
+  if (reqNum <= 0) {
+    _bus.$emit('closeLoading')      
+  } else {
+    _bus.$emit('showloading')      
+  }
+})
+```
+
 ## 页面级 MVC 结构
 - 数据流动：view -> service -> dao -> service -> view
 - 我的做法，将axios请求放在单独一个文件作为api，导出每一个请求的方法（dao层），在service层做一次对接接口后的数据转换，变成页面需要的数据格式，最后在view层，在有需要的组件中导入这个service的某个方法，也是实现组件化的一点。
