@@ -23,7 +23,10 @@ a:active {color: #0000FF} /* 选定的链接 */
 - Inherit：规定应从父元素继承 box-sizing 属性的值
 
 ## > 选择器
-- 只选择下一层符合的元素，往下孙子等等等不会遍历，与 .box .spab 的 . 不同，在 className 为 box 下会查找所有 className 为 spab 的元素
+- 只选择下一层符合的元素（直接子元素），不会往下遍历孙子等等等，与 .box .spab 中间的 空格 不同，在 className 为 box 下会查找所有 className 为 spab 的元素
+
+## + 选择器
+
 
 ## css 中的单位
 - em：相对于父级元素的字体大小：1em（当前字体大小），2em（当前字体大小的两倍）
