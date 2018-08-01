@@ -96,8 +96,8 @@
 2. 不允许在一个模块内部直接读取其他模块的state方法（读操作）
 
 - 我们建议将跨模块通信的逻辑代码放在父模块中，或者在一个叫做Mediator层中单独维护。
-最终得到完整的业务逻辑架构图：<br>
+- 最终得到完整的业务逻辑架构图：<br>
 ![](https://github.com/Krryxa/WORK-LEARNING/blob/master/images/p_11.jpg)
 
 ## 参考文章地址
-[https://juejin.im/post/59cb0d0b5188257e876a2d27]()
+[https://juejin.im/post/59cb0d0b5188257e876a2d27](https://juejin.im/post/59cb0d0b5188257e876a2d27)
