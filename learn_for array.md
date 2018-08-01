@@ -203,8 +203,12 @@ console.log(fse); // 输出 Lemon,Pineapple,Banana,Orange,Apple,Mango
 let myArrs = ["Banana", "Orange", "Apple", "Mango"];
 myArrs.splice(2,1); // 从数组下标为 2 开始删除，删除 1 个元素
 console.log(myArrs); // 输出 Banana,Orange,Mango
+// splice(index, howmany, item1, item2, ..., itemX);
+// index: 必须，表示添加 / 删除元素的下标，（包括此下标）
+// howmany：必须，表示要删除的元素数量，如果设置为0，则不删除
+// 从第三个参数开始，代表向数组添加的新元素
+// 在有第三个参数的时候，如果设置 howmany 大于0，则就可以又删除该下标元素，又可以新增元素在这个下标，也就是替换
 ```
-
 
 ## 额外谈一下arguments
 ```JavaScript
