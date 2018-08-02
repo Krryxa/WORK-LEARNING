@@ -161,7 +161,7 @@ buy().then( work, err => {
          或
          一旦失败时找不到 then() 第二个参数或 catch() 的回调，promise 的状态就置为 rejected
 
-        且 promise 状态一旦改变，就无法再次改变状态
+         且 promise 状态一旦改变，就无法再次改变状态
 ```
 
 ## all、race
