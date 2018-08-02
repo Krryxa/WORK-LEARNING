@@ -145,10 +145,13 @@ buy().then( work, err => {
   console.log(data);
 });
 
-1. 注意：如果执行 buy() 返回 promise 是 rejected 状态，就会找 then() 有没有第二个参数或者有没有 catch() 方法，有则进入这个的失败的回调
-2. 当这个失败的回调执行成功后（没有再发生 rejected 的情况下），promise 的状态就会置为 resolved 状态
-3. 如果此时后面还跟着 then(out, err => {}) 就会执行 out 方法，因为第二点说了，上一个存在失败的回调，并且失败的回调成功执行（没有再发生 rejected），就会往下继续 then()
-4. 跟着第一点，如果执行 buy() 返回 promise 是 rejected 状态，并且没有失败的回调，promise 的状态就只能 rejected，就不会再往下执行 then()
+1. 注意：如果执行 buy() 异步失败，就会找 then() 有没有第二个参数或者有没有 catch() 方法
+   有则进入这个的失败的回调（此时 promise 状态为 pending）
+2. 当这个失败的回调执行成功后（没有发生 rejected 的情况下），就会继续找后面有没有 then()，
+   没有则 promise 的状态就会置为 resolved 状态，有则继续是 pending 状态，继续执行 then() 第一个参数的回调函数
+3. 如果继续执行的 then() 回调函数异步失败，且又找不到下一个 then() 的第二个参数或 catch() 方法，
+   此时 promise 的状态置为 rejected
+4. 跟着第一点，如果执行 buy() 异步失败，并且没有失败的回调，promise 的状态就只能 rejected，就不会再往下执行 then()
 ```
 
 ## all、race
