@@ -1,0 +1,113 @@
+# 字符串
+
+## 字符串属性
+```
+constructor	返回创建字符串属性的函数
+length	    返回字符串的长度
+prototype	允许您向对象添加属性和方法
+```
+
+## 字符串方法
+- 不改变原字符串：
+```javascript
+str.charAt(index) // 返回指定位置的字符
+str.charCodeAt(index) // 返回指定位置的字符的 Unicode 编码
+str.concat(string1, string2, ..., stringX) // 链接两个或多个字符串
+// 以下两个方法第二个参数都可选，若指定start，则从该位置开始向后或向前检索
+str.indexOf(value, start) // 返回某个指定的字符串值在字符串中首次出现的位置（区分大小写）
+str.lastIndexOf(value, start) // 返回一个指定的字符串值最后出现的位置
+str.match(regexp) // 在字符串内检索指定的值，或找到一个或多个正则表达式的匹配
+str.replace(searchvalue, newvalue) // 在字符串中用一些字符替换另一些字符，或替换一个与正则表达式匹配的子串
+str.search(searchvalue) // 检索指定的子字符串，或检索与正则表达式相匹配的子字符串，返回匹配到字符串的起始下标
+str.slice(start, end) // 提取字符串的某个部分，并返回被提取的部分（新字符串）end 可选，下面有详解
+str.substring(from, to) // 提取字符串中介于两个指定下标之间的字符，不包括下标 to（若未指定第二个参数，则会一直提取到字符串末尾）
+str.substr(start, length) // 在字符串中提取从下标开始的指定数目的字符，可代替 substring() 和 slice() 来使用，下面有详解
+str.split(separator, limit) // 把一个字符串分割成字符串数组 (limit：可选，指定返回的数组的最大长度，返回的数组不会大于这个长度)
+str.toLowerCase() // 把字符串转换为小写
+str.toUpperCase() // 把字符串转换为大写
+str.trim() // 去除字符串两边的空白
+str.valueOf() // 返回 String 对象的原始值
+```
+
+- 创建字符串：
+```javascript
+String.fromCharCode(n1, n2, ..., nX) // 可接受一个或多个指定的 Unicode 值，然后返回一个字符串
+```
+
+## 讲一下 slice 方法 （面试）
+- str.slice(start, end)
+```javascript
+// 两个参数
+// 使用 start（包含此下标） 和 end（不包含此下标） 参数来指定字符串提取的部分
+start   必须，要提取字符串片断的起始下标。第一个字符下标为 0，如果该参数是负数，则从字符串尾部开始算起的位置（-1：倒数第一个字符，-2：倒数第二个字符）
+end     可选，紧接着要截取的片段结尾的下标。若未指定此参数，则要提取的子串包括 start 到原字符串结尾的字符串。如果该参数是负数，则从字符串尾部开始算起的位置（-1：倒数第一个字符，-2：倒数第二个字符）
+
+// 提取所有字符串 参数为0
+let str = 'hello world!';
+let n = str.slice(0); // 全部打印原字符串
+
+// 从字符串的起始下标 3 开始提取字符串片段
+let str = 'Hello world!';
+let n = str.slice(3); // 打印：lo world!
+
+// 从字符串的起始下标 3 提取到下标为 8（不包括 8）的字符串片段
+let str = 'Hello world!';
+let n = str.slice(3,8); // 打印：lo wo
+
+// 只提取第1个字符
+let str = 'Hello world!';
+let n = str.slice(0,1); // 打印： H
+
+// 提取最后一个字符
+let str = 'Hello world!';
+let n = str.slice(-1); // 打印：!
+
+// 提取最后三个字符
+let str = 'Hello world!';
+let n = str.slice(-3); // 打印：ld!
+```
+
+## 讲一下 substr 方法 （面试）
+- str.substr(start, length)
+```javascript
+// 两个参数
+// 使用 start（包含此下标） 和 length（提取的字符数） 参数来指定字符串提取的部分
+start   必须，要提取字符串片断的起始下标。第一个字符下标为 0，如果该参数是负数，则从字符串尾部开始算起的位置（-1：倒数第一个字符，-2：倒数第二个字符）
+length  可选，子串中的字符数，必须是数值。如果省略了该参数，那么返回的是从 start（第一个参数） 位置到结尾的字串
+
+// 提取所有字符串 参数为0
+let str = 'hello world!';
+let n = str.substr(0); // 全部打印原字符串
+
+// 从字符串的起始下标 3 开始提取字符串片段
+let str = 'Hello world!';
+let n = str.substr(3); // 打印：lo world!
+
+// 从字符串的起始下标 3 开始提取 5 个字符
+let str = 'Hello world!';
+let n = str.substr(3,5); // 打印：lo wo
+
+// 只提取第1个字符
+let str = 'Hello world!';
+let n = str.substr(0,1); // 打印： H
+
+// 提取最后一个字符
+let str = 'Hello world!';
+let n = str.substr(-1); // 打印：!
+
+// 提取最后三个字符
+let str = 'Hello world!';
+let n = str.substr(-3); // 打印：ld!
+```
+
+## java 中：replace 与 replaceAll 的区别 （JavaScript 没有 replaceAll）
+```
+相同点：都是全部替换，即把源字符串中的某一字符或字符串全部换成指定的字符或字符串；
+不同点：replaceAll支持正则表达式，因此会对参数进行解析（两个参数均是），如通过 replaceAll("\\d", "*") 把一个字符串所有的数字字符都换成星号；而replace则不会，replace("\\d","*")就是替换"\\d"的字符串，而不会解析为正则。
+还有一个不同点：“\”在java中是一个转义字符，所以需要用两个代表一个。例如 System.out.println( "\\" ) ;只打印出一个"\"。但是“\”也是正则表达式中的转义字符，需要用两个代表一个。所以：\\\\被java转换成\\，\\又被正则表达式转换成\，因此用 replaceAll 替换“\”为"\\"，就要用replaceAll("\\\\","\\\\\\\\")，而replace则replace("\\","\\\\")
+```
+
+## JS判断字符串长度（英文占1个字符，中文汉字占2个字符）
+```javascript
+
+```

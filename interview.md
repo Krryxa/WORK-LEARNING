@@ -20,6 +20,8 @@ true - 事件句柄在捕获阶段执行
 false- 默认。事件句柄在冒泡阶段执行
 ```
 2. 字符串转数组 split
+3. 获取字符串后三位（提取字符串的方法）str.slice(-3)
+- 字符串方法易忘点：[https://github.com/Krryxa/WORK-LEARNING/blob/master/learn_string.md](https://github.com/Krryxa/WORK-LEARNING/blob/master/learn_string.md)
 3. 数组转字符串 join
 
 4. promise 以及为什么要使用它

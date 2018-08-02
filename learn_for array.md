@@ -168,10 +168,14 @@ console.log(flat);
 
 // slice 从已有的数组中返回选定的元素
 // 不改变原数组
+array.slice(start, end);
+// 使用 start（包含此下标） 和 end（不包含此下标） 参数来指定数组提取的部分
+start   必须，要提取数组元素的起始下标。如果该参数是负数，则从数组尾部开始算起的位置（-1：倒数第一个元素，-2：倒数第二个元素）
+end     可选，规定从何处结束选取。该参数是数组片断结束处的数组下标（不包含此下标）。如果没有指定该参数，那么切分的数组包含从 start 到数组结束的所有元素。如果这个参数是负数，那么它规定的是从数组尾部开始算起的元素
 let fruits = ["Banana", "Orange", "Lemon", "Apple", "Mango"];
-let citrus = fruits.slice(1,3); 
-console.log(citrus); // 输出 Orange,Lemon
-
+console.log(fruits.slice(0)); // 输出数组全部元素
+console.log(fruits.slice(1, 3)); // 输出 Orange, Lemon
+console.log(fruits.slice(-2)); // 输出 Apple, Mango
 
 
 // pop 用于删除数组的最后一个元素并返回删除的元素
@@ -187,7 +191,6 @@ console.log(fur); // 输出 Banana,Orange,Apple
 let fts = ["Banana", "Orange", "Apple", "Mango"];
 fts.shift();
 console.log(fts);// 输出 Orange,Apple,Mango
-
 
 
 // unshift 向数组的开头添加一个或更多元素，并返回新的长度
