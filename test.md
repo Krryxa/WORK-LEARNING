@@ -78,3 +78,5 @@ querySelector/querySelectorAll 相比下面这些方法有什么区别？
 
 ### 性能 
 根据不同浏览器的不同版本有两者的执行速度也就是性能上有所不同，总体方向上: getElementBy 系列的执行速度比 querySelector/querySelectorAll 的快
+
+## call('Alice').sleep(5).say('hi');

@@ -61,6 +61,13 @@ query -> 是通过 url 来传递参数的同样是key:value形式传递（类似
 接收参数：
 this.$route.query.id
 this.$route.params.id
+路由的配置
+{
+  path:'/admin/:username', // :冒号后面是参数
+  component:() => import('../components/Admin.vue'),
+  name:"admin",
+  meta:{title:'个人中心'},
+},
 ```
 > 关于path路径加不加 / 的问题，加了/就是在根路径下跳转，不加就是在当前路径后面跳转，子页面，使用命名路由就不用管加不加 / 的问题了
 
@@ -153,16 +160,16 @@ this.$http.get('/someUrl', [options]).then((response) => {
 ![](https://github.com/Krryxa/WORK-LEARNING/blob/master/images/l_3.jpg)
 ```JavaScript
 Vue.http.interceptors.push((request, next) => {
-        // ...
-        // 请求发送前的处理逻辑，比如加载动画
-        // ...
-    next((response) => {
-        // ...
-        // 请求发送后的处理逻辑
-        // ...
-        // 根据请求的状态，response参数会返回给successCallback或errorCallback
-        return response
-    })
+  // ...
+  // 请求发送前的处理逻辑，比如加载动画
+  // ...
+  next((response) => {
+    // ...
+    // 请求发送后的处理逻辑
+    // ...
+    // 根据请求的状态，response参数会返回给successCallback或errorCallback
+    return response
+  })
 })
 ```
 
@@ -296,3 +303,4 @@ axios.interceptors.response.use(response => {        // 接受请求后reqNum--�
 ## 页面级 MVC 结构
 - 数据流动：view -> service -> dao -> service -> view
 - 我的做法，将axios请求放在单独一个文件作为api，导出每一个请求的方法（dao层），在service层做一次对接接口后的数据转换，变成页面需要的数据格式，最后在view层，在有需要的组件中导入这个service的某个方法，也是实现组件化的一点。
+- 参考另一个地址：[https://github.com/Krryxa/WORK-LEARNING/blob/master/page_mvc.md](https://github.com/Krryxa/WORK-LEARNING/blob/master/page_mvc.md)
