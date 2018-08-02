@@ -107,7 +107,80 @@ let n = str.substr(-3); // 打印：ld!
 还有一个不同点：“\”在java中是一个转义字符，所以需要用两个代表一个。例如 System.out.println( "\\" ) ;只打印出一个"\"。但是“\”也是正则表达式中的转义字符，需要用两个代表一个。所以：\\\\被java转换成\\，\\又被正则表达式转换成\，因此用 replaceAll 替换“\”为"\\"，就要用replaceAll("\\\\","\\\\\\\\")，而replace则replace("\\","\\\\")
 ```
 
+## ASCII、Unicode 和 UTF-8 编码的区别
+![](https://github.com/Krryxa/WORK-LEARNING/blob/master/images/P_12.jpg)
+
 ## JS判断字符串长度（英文占1个字符，中文汉字占2个字符）
 ```javascript
+// 方法一：
+// Unicode 编码
+String.prototype.gblen = () => {    
+  let len = 0;    
+  for (let i=0; i<this.length; i++) {    
+    if (this.charCodeAt(i) > 127 || this.charCodeAt(i) === 94) {    
+      len += 2;    
+    } else {    
+      len++;    
+    }    
+  }    
+  return len;    
+}
 
+// 方法二：
+// Unicode 编码
+let strlen = str => {
+  let len = 0;  
+  for (let i=0; i<str.length; i++) {   
+    let c = str.charCodeAt(i);   
+    // 单字节加1   
+    if ((c >= 0x0001 && c <= 0x007e) || (0xff60 <= c && c <= 0xff9f)) {   
+      len++;   
+    }   
+    else {   
+      len += 2;   
+    }   
+  }   
+  return len;  
+}  
+
+// 方法三：
+// Unicode 编码
+let jmz = {};  
+jmz.GetLength = str => {
+  let realLength = 0, len = str.length, charCode = -1;  
+  for (let i = 0; i < len; i++) {
+    charCode = str.charCodeAt(i);  
+    if (charCode >= 0 && charCode <= 128) {
+      realLength += 1;
+    } else {
+      realLength += 2;
+    }
+  }  
+  return realLength;  
+};  
+
+// 方法四：
+// Unicode 编码
+let l = str.length;   
+let blen = 0;   
+for (i = 0; i < l; i++) {   
+  if ((str.charCodeAt(i) & 0xff00) != 0) {   
+    blen++;   
+  }   
+  blen++;   
+}
+
+// 方法五：
+// 把双字节的替换成两个单字节的然后再获得长度
+getBLen = str => {  
+  if (str != null) {
+    if (typeof str != "string") {  
+      str += "";  
+    }  
+    return str.replace(/[^\x00-\xff]/g,"01").length;  
+  } else {
+    // TODO
+    return 0;
+  } 
+}  
 ```
