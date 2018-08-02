@@ -152,6 +152,11 @@ buy().then( work, err => {
 3. 如果继续执行的 then() 回调函数异步失败，且又找不到下一个 then() 的第二个参数或 catch() 方法，
    此时 promise 的状态置为 rejected
 4. 跟着第一点，如果执行 buy() 异步失败，并且没有失败的回调，promise 的状态就只能 rejected，就不会再往下执行 then()
+
+总结一点：成功，就继续执行 then() 第一个参数的回调，失败，就继续执行 then() 第二个参数或 catch() 的回调，依次这样执行，promise 的状态是 pending
+一旦成功时找不到 then() 第一个参数的回调，promise 的状态就置为 resolved
+或
+一旦失败时找不到 then() 第二个参数或 catch() 的回调，promise 的状态就置为 rejected
 ```
 
 ## all、race
