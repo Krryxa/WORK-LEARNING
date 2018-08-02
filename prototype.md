@@ -108,11 +108,17 @@ d.__proto__ === Function.prototype;
 - 如：
 ```JavaScript
 // 普通对象newObj 和 Object
+let newObj = new Object();
 // 因为 newObj.__proto__ === newObj.constructor.prototype
 // 因为 newObj.constructor === Object
 // 所以 newObj.__proto__ === Object.prototype
 
 // 函数对象Person 和 Function
+function Person(name, age, job) {
+  this.name = name;
+  this.age = age;
+  this.job = job;
+}
 // 因为 Person.__proto__ === Person.constructor.prototype
 // 因为 Person.constructor === Function
 // 所以 Person.__proto__ === Function.prototype
@@ -158,7 +164,7 @@ person1.__proto__ === Person.prototype ->
 Person.prototype.__proto__ === Object.prototype ->
 Object.prototype.__proto__ === null
 ```
-> 把这个有__proto__串起来的直到 Object.prototype.__proto __ 为 null 的链叫做原型链，原型链实际上就是 js 中数据继承的继承链。
+> 把这个有__proto__串起来的直到 Object.prototype.__proto __ 为 null 的链叫做原型链，原型链实际上就是 js 中数据继承的继承链
 
 ## 总结
 - 原型和原型链是JS实现继承的一种模型。
