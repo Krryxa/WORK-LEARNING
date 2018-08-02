@@ -66,6 +66,7 @@ for (let key in oo) {
 ```
 
 7. 介绍一下闭包和闭包常用场景
+- 详见：[https://github.com/Krryxa/WORK-LEARNING/blob/master/closure.md](https://github.com/Krryxa/WORK-LEARNING/blob/master/closure.md)
 > 背景例子：计数器的困境：<br><br>
 设想下如果你想统计一些数值，且该计数器在所有函数中都是可用的。
 你可以使用全局变量，定义函数 add() 设置计数器递增<br>
