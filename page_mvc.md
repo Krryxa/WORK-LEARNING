@@ -4,13 +4,13 @@
 > 架构的目的是管理复杂度，将复杂问题分而治之、有效管理，具体方法如下：
 ### 首先通过路由切割“页面级”粒度的功能模块
 > 这里的“页面级”粒度指一个路由映射的组件（路由和页面(组件)对应）<br>
-![](https://github.com/Krryxa/WORK-LEARNING/blob/master/images/l_1.jpg)
+![](https://raw.githubusercontent.com/Krryxa/WORK-LEARNING/master/images/l_1.jpg)
 
 ### 同一“页面”内的模块再划分
 > 如图划分原则：
 - 纵向：通过业务功能（可根据视图模块判断）划分
 - 横向：通过Model-View-Controller三种不同职能划分<br>
-![](https://github.com/Krryxa/WORK-LEARNING/blob/master/images/p_8.jpg)
+![](https://raw.githubusercontent.com/Krryxa/WORK-LEARNING/master/images/p_8.jpg)
 - 如上，将每个页面划分为 MVC 结构，在介绍前端在哪实现 MC 两层之前，先说一下 MVC 的概念：
 1. 模型 Model：模型代表着一种企业规范，就是业务流程/状态的处理以及业务规则的规定。业务流程的处理过程对其他层来说是不透明的，模型接受视图的请求，并从接口返回结果。业务模型的设计可以说是MVC的核心
 
@@ -86,7 +86,7 @@
 - 日志服务、本地存储服务、错误监控、Mock服务等统一存放在公共服务层；
 
 > 按照上面三点合并同类项后，业务架构图变更为：<br>
-![](https://github.com/Krryxa/WORK-LEARNING/blob/master/images/p_10.jpg)
+![](https://raw.githubusercontent.com/Krryxa/WORK-LEARNING/master/images/p_10.jpg)
 
 ### 跨模块通信
 > 模块粒度逐渐细化，会带来更多的跨模块通信诉求，为避免模块间相互耦合、确保架构长期干净可维护，我们规定：
@@ -96,7 +96,7 @@
 
 - 我们建议将跨模块通信的逻辑代码放在父模块中，或者在一个叫做Mediator层中单独维护。
 - 最终得到完整的业务逻辑架构图：<br>
-![](https://github.com/Krryxa/WORK-LEARNING/blob/master/images/p_11.jpg)
+![](https://raw.githubusercontent.com/Krryxa/WORK-LEARNING/master/images/p_11.jpg)
 
 ## 参考文章地址
 [https://juejin.im/post/59cb0d0b5188257e876a2d27](https://juejin.im/post/59cb0d0b5188257e876a2d27)

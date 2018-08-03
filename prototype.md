@@ -100,7 +100,7 @@ d.constructor === Function;
 d.__proto__ === Function.prototype;
 ```
 - 如下构造器都是函数对象：
-![](https://github.com/Krryxa/WORK-LEARNING/blob/master/images/p_6.jpg)
+![](https://raw.githubusercontent.com/Krryxa/WORK-LEARNING/master/images/p_6.jpg)
 
 ## 小总结
 - 普通对象的__proto__ === Object.prototype
@@ -153,7 +153,7 @@ function Person(name, age, job) {
 let obj = new Object()
 ```
 - obj 是 Object 的实例，所以 obj 继承了Object 的原型对象Object.prototype 上所有的方法：<br>
-![](https://github.com/Krryxa/WORK-LEARNING/blob/master/images/p_7.jpg)
+![](https://raw.githubusercontent.com/Krryxa/WORK-LEARNING/master/images/p_7.jpg)
 - Object 的每个实例都具有以上的属性和方法。
 - 所以我可以用 Person.constructor 也可以用 Person.hasOwnProperty
 

@@ -2,7 +2,7 @@
 
 > 在chrome浏览器，对于同一域名，最多支持6个请求的并发，其他请求会推入到队列中等待或停滞不前，直到6个请求之一完成后，队列中新的请求才会放出。
 
-![](https://github.com/Krryxa/WORK-LEARNING/blob/master/images/p_5.jpg)
+![](https://raw.githubusercontent.com/Krryxa/WORK-LEARNING/master/images/p_5.jpg)
 - 可以看到，六个绿色条并发请求，四个灰色条等待请求，最下面三个绿色条3.4s后才触发请求
 
 ## 优化图片的加载

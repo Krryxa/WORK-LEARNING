@@ -3,7 +3,7 @@
 > 框架：vue 2.x，UI 组件：Element
 
 ## 示例
-![](https://github.com/Krryxa/WORK-LEARNING/blob/master/images/city.jpg)
+![](https://raw.githubusercontent.com/Krryxa/WORK-LEARNING/master/images/city.jpg)
 
 ## 介绍
 - 实现省市区三级多选联动，可任选一个省级、市级、区级，加入已选框，也可以在已选框中删除对应的区域。

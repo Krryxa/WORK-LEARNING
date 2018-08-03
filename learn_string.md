@@ -117,7 +117,7 @@ let n = str.substr(-3); // 打印：ld!
 
 
 ## ASCII、Unicode 和 UTF-8 编码的区别
-![](https://github.com/Krryxa/WORK-LEARNING/blob/master/images/p_12.jpg)
+![](https://raw.githubusercontent.com/Krryxa/WORK-LEARNING/master/images/p_12.jpg)
 
 ## JS判断字符串长度（英文占1个字符，中文汉字占2个字符）
 ```javascript

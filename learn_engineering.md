@@ -45,7 +45,7 @@
 - 组件化就是一种思想，组件化开发可以有效降低代码模块的耦合性（块间联系，模块之间的联系、越低则独立性越高），减少编译时间。
 - 页面逻辑过于复杂，便将页面分为很多个业务组件模块分而治之，避免重复造轮子，这样的话维护人员每次只需要改动对应的模块即可，以达到最大程度的降低开发难度与维护成本的效果，所以现在比较好的框架都会对组件化作一定程度的实现。
 
-![](https://github.com/Krryxa/WORK-LEARNING/blob/master/images/q_1.jpg)
+![](https://raw.githubusercontent.com/Krryxa/WORK-LEARNING/master/images/q_1.jpg)
 
 ### 前端工程化项目分为3大模块： 
 1. Node服务，提供数据代理，路由，和服务器渲染，通过restful api和后端通信。 

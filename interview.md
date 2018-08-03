@@ -49,7 +49,7 @@ Obj.prototype.y = 2;
 var oo = new Obj();
 console.log(oo); // oo的打印结果如下图，可以看到其自有属性和继承自原型的属性
 ```
-![](https://github.com/Krryxa/WORK-LEARNING/blob/master/images/p_13.jpg)
+![](https://raw.githubusercontent.com/Krryxa/WORK-LEARNING/master/images/p_13.jpg)
 - obj.hasOwnProperty(‘属性名’) 用于检查给定的属性是否存在于当前实例对象中，（而不是实例原型中）（解释来至：javascript高级程序设计第三版第三章Object）。如果是返回true，如果不是返回 false
 - in 操作符用来判断某个属性属于某个对象，可以是对象的直接属性，也可以是通过 prototype 继承的属性。如：(属性名 in 对象) ，不管属性是原型的还是实例的，只要存在就会返回ture；否则返回false
 ```javascript
