@@ -367,12 +367,12 @@ axios.interceptors.response.use(response => {        // 接受请求后reqNum--�
 - 联想起 Java web 经典三层结构：控制层(表现层)、持久层(dao层)、业务层(service层) （MVC 是一种设计模式，java web 三层架构是一种架构思想）
 - 从上面可知，在页面中实现 MVC 模式，对于vue项目中，MC 两层又有两种写法：
 
-1. 多个组件通用数据的大项目：
-写在vuex中，页面 dispatch action，在 action 内部做异步请求调用接口返回数据，随 commit mutation 传递接口数据，并在 mutation 内部对数据做逻辑处理，写入 state，在页面调用 state 或 getters 直接使用。
+1. 多个组件通用数据的大项目：<br>
+> 写在vuex中，页面 dispatch action，在 action 内部做异步请求调用接口返回数据，随 commit mutation 传递接口数据，并在 mutation 内部对数据做逻辑处理，写入 state，在页面调用 state 或 getters 直接使用<br>
 数据流动：view -> vuex(action) -> dao -> vuex(mutation) -> state -> (getters) -> view
 
-2. 没有太多通用数据的项目：
-页面调用接口返回的数据，单独将这一部分数据处理抽出来作为 service，就变成页面调用 service 层，在 service 层做异步请求调用接口返回数据，并对数据做逻辑处理返回到页面直接使用
+2. 没有太多通用数据的项目：<br>
+> 页面调用接口返回的数据，单独将这一部分数据处理抽出来作为 service，就变成页面调用 service 层，在 service 层做异步请求调用接口返回数据，并对数据做逻辑处理返回到页面直接使用<br>
 数据流动：view -> service -> dao -> service -> view
 
 - 参考另一个地址：[https://github.com/Krryxa/WORK-LEARNING/blob/master/page_mvc.md](https://github.com/Krryxa/WORK-LEARNING/blob/master/page_mvc.md)
