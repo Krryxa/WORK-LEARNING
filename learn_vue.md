@@ -35,7 +35,7 @@ vue init webpack vue_project
 - 传统的页面应用，是用一些超链接来实现页面切换和跳转的。在vue-router单页面应用中，则是应该是路径之间的切换，也就是组件的切换
 1. 是路由和页面(组件)对应
 
-![](https://github.com/Krryxa/WORK-LEARNING/blob/master/images/l_1.jpg)
+![](https://raw.githubusercontent.com/Krryxa/WORK-LEARNING/master/images/l_1.jpg)
 
 2. 通过router-link进行跳转
 ```html
@@ -188,7 +188,7 @@ put(url, [body], [options])
 patch(url, [body], [options])
 ```
 - options对象
-![](https://github.com/Krryxa/WORK-LEARNING/blob/master/images/l_2.jpg)
+![](https://raw.githubusercontent.com/Krryxa/WORK-LEARNING/master/images/l_2.jpg)
 
 ```JavaScript
 this.$http.get('/someUrl', [options]).then((response) => {
@@ -199,7 +199,7 @@ this.$http.get('/someUrl', [options]).then((response) => {
 ```
 - inteceptor
     > 拦截器可以在请求发送前和发送请求后做一些处理，比如加载动画
-![](https://github.com/Krryxa/WORK-LEARNING/blob/master/images/l_3.jpg)
+![](https://raw.githubusercontent.com/Krryxa/WORK-LEARNING/master/images/l_3.jpg)
 ```JavaScript
 Vue.http.interceptors.push((request, next) => {
   // ...
@@ -345,9 +345,9 @@ axios.interceptors.request.use(function (config) {  //  在请求发出之前进
 axios.interceptors.response.use(response => {        // 接受请求后reqNum--，判断请求所有请求是否完成
   reqNum--
   if (reqNum <= 0) {
-    _bus.$emit('closeLoading')      
+    _bus.$emit('closeLoading')
   } else {
-    _bus.$emit('showloading')      
+    _bus.$emit('showloading')
   }
 })
 ```
@@ -356,7 +356,7 @@ axios.interceptors.response.use(response => {        // 接受请求后reqNum--�
 > 如图划分原则：
 - 纵向：通过业务功能（可根据视图模块判断）划分
 - 横向：通过Model-View-Controller三种不同职能划分<br>
-![](https://github.com/Krryxa/WORK-LEARNING/blob/master/images/p_8.jpg)
+![](https://raw.githubusercontent.com/Krryxa/WORK-LEARNING/master/images/p_8.jpg)
 - 如上，将每个页面划分为 MVC 结构，在介绍前端在哪实现 MC 两层之前，先说一下 MVC 的概念：
 1. 模型 Model：模型代表着一种企业规范，就是业务流程/状态的处理以及业务规则的规定。业务流程的处理过程对其他层来说是不透明的，模型接受视图的请求，并从接口返回结果。业务模型的设计可以说是MVC的核心
 
