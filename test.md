@@ -71,12 +71,12 @@ querySelector/querySelectorAll 相比下面这些方法有什么区别？
 
 ### 返回值 
 - querySelector/querySelectorAll 返回的是一个 Static Node List
-- 而 getElementsBy 系列的返回的是一个 Live Node List。 
+- 而 getElementsBy 系列的返回的是一个 Live Node List
 
 ### 简言之: 
 在通过querySelector/querySelectorAll 或 getElementsBy 获取了元素集合后，插入新的元素，前者是不可以检测出来，元素集合不会添加插入的新元素的；而后者相反，后者是实时反馈的.
 
 ### 性能 
-根据不同浏览器的不同版本有两者的执行速度也就是性能上有所不同，总体方向上: getElementBy 系列的执行速度比 querySelector/querySelectorAll 的快
+根据不同浏览器的不同版本有两者的执行速度也就是性能上有所不同，总体方向上: getElementBy 系列的执行速度比 querySelector/querySelectorAll 的快
 
 ## call('Alice').sleep(5).say('hi');
