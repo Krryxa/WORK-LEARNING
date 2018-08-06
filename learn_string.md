@@ -25,6 +25,7 @@ str.substr(start, length) // 在字符串中提取从下标开始的指定数目
 str.split(separator, limit) // 把一个字符串分割成字符串数组 (limit：可选，指定返回的数组的最大长度，返回的数组不会大于这个长度)
 str.toLowerCase() // 把字符串转换为小写
 str.toUpperCase() // 把字符串转换为大写
+str.includes() // 判断字符串是否包含某个子串
 str.trim() // 去除字符串两边的空白
 str.valueOf() // 返回 String 对象的原始值
 ```
