@@ -4,6 +4,11 @@
 - 在Vue中，多组件的开发给我们带来了很多的方便，但同时当项目规模变大的时候，多个组件间的数据通信和状态管理就显得难以维护。而Vuex就此应运而生。将状态管理单独拎出来，应用统一的方式进行处理，在后期维护的过程中数据的修改和维护就变得简单而清晰了。
 - Vuex采用和Redux类似的单向数据流的方式来管理数据。用户界面负责触发动作（Action)进而改变对应状态（State），从而反映到视图（View）上。
 
+## 问题：为什么不能直接调用 mutation 方法或者直接修改 state 属性，而是必须得通过 commit 来提交 mutation 才能改变 state 的状态呢？
+> 改变 Vuex 的 store 中的状态的唯一方法是 commit mutation。<br>
+数据响应式是vue的核心概念，在 vue 上衍生出的 vuex 自然也遵循了这个概念，所以直接调用 mutation 方法和直接改变 store.state 都是一样的，vuex 跟踪不到数据的变化，无法做到响应式。<br>
+所以只能通过 commit mutation 来改变 state 的状态，将所有 state 的变化封装在 mutation，这样在阅读代码的时候也能更容易地解读应用内部的状态改变
+
 - 使用
 1. State
 2. store
