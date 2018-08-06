@@ -154,3 +154,6 @@ export default new Router({
 
 ```
 
+## 改变 this 指针
+- new、call、apply、bind、let _this = this、=>
+- 详情请看：[https://www.cnblogs.com/ainyi/p/8931238.html](https://www.cnblogs.com/ainyi/p/8931238.html)

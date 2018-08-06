@@ -7,7 +7,7 @@
 ## 问题：为什么不能直接调用 mutation 方法或者直接修改 state 属性，而是必须得通过 commit 来提交 mutation 才能改变 state 的状态呢？
 > 改变 Vuex 的 store 中的状态的唯一方法是 commit mutation。<br>
 数据响应式是vue的核心概念，在 vue 上衍生出的 vuex 自然也遵循了这个概念，所以直接调用 mutation 方法和直接改变 store.state 都是一样的，vuex 跟踪不到数据的变化，无法做到响应式。<br>
-所以只能通过 commit mutation 来改变 state 的状态，将所有 state 的变化封装在 mutation，统一的页面状态管理以及操作处理，这样在阅读代码的时候也能更容易地解读应用内部的状态改变，可以让复杂的组件交互变得简单清晰，同时可在调试模式下进行时光机般的倒退前进操作，查看数据改变过程，使 code debug 更加方便
+所以只能通过 commit mutation 来改变 state 的状态，将所有 state 的变化封装在 mutation，统一的页面状态管理以及操作处理，这样在阅读代码的时候也能更容易地解读应用内部的状态改变，可以让复杂的组件交互变得简单清晰，同时可在调试模式下进行时光机般的倒退前进操作，查看数据改变过程，使 code debug 更加方便。
 
 - 使用
 1. State
