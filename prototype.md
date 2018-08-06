@@ -18,8 +18,8 @@ console.log(typeof f1); //function
 console.log(typeof f2); //function 
 console.log(typeof f3); //function   
 
-console.log(typeof o1); //object 
-console.log(typeof o2); //object 
+console.log(typeof o1); //object
+console.log(typeof o2); //object
 console.log(typeof o3); //object
 ```
 > 在上面的例子中 o1 o2 o3 为普通对象，f1 f2 f3 为函数对象。凡是通过 new Function() 创建的对象都是函数对象，其他的都是普通对象。f1,f2,归根结底都是通过 new Function()的方式进行创建的。Function、Object 也都是通过 New Function() 创建的
@@ -41,7 +41,8 @@ console.log(person2.constructor == Person); //true
 > 上面的例子中 person1 和 person2 都是 Person 的实例。这两个实例都继承了 Person 的原型对象 prototype 的 constructor 属性，该属性（是一个指针）指向 Person （相等）
 
 ## 原型对象
-- 在 JavaScript 中，每当定义一个对象（函数也是对象）时候，对象（Person）中都会包含一些预定义的属性。其中每个函数对象都有一个 prototype 属性，这个属性就是函数的原型对象：Person.prototype
+- 在 JavaScript 中，只有函数对象 function 才具有 prototype 属性。
+- 每当定义一个函数对象，对象（Person）中都会包含一些预定义的属性。其中每个函数对象都有一个 prototype 属性，这个属性就是函数的原型对象：Person.prototype
 - 在默认情况下，所有的原型对象都有一个 constructor（构造函数）属性，这个属性（是一个指针）指向 prototype 属性所在的函数（Person）即：Person.prototype.constructor == Person
 - 可以在原型对象里定义一些属性：
 ```javascript
@@ -60,8 +61,8 @@ person1.constructor == Person
 Person.prototype.constructor == Person
 ```
 
-## __ proto __
-- JS 在创建对象的实例（不论是普通对象还是函数对象）的时候，都有一个叫做__proto__ 的内置属性，用于指向创建它的构造函数的原型对象 prototype
+## __ proto __：隐式原型
+- JS 在创建对象的实例（不论是普通对象还是函数对象）的时候，都有一个叫做__proto__ 的内置属性，称为隐式原型，指向创建它的构造函数的原型对象 prototype，这也保证了实例能够访问在构造函数原型中定义的属性和方法（继承）
 ```javascript
 Person.prototype.constructor == Person;
 person1.__proto__ == Person.prototype;
@@ -103,6 +104,8 @@ d.__proto__ === Function.prototype;
 ![](https://raw.githubusercontent.com/Krryxa/WORK-LEARNING/master/images/p_6.jpg)
 
 ## 小总结
+- javascript 里所有的对象都有__proto__属性(不论是普通对象还是函数对象)，指向创建它的构造函数的原型对象 prototype
+- 只有函数对象 function 才具有 prototype 属性。这个属性是一个指针，指向一个对象：原型对象。这个对象的用途就是包含所有实例共享的属性和方法。原型对象也有属性，有个叫做 constructor，这个属性包含了一个指针，指回原构造函数
 - 普通对象的__proto__ === Object.prototype
 - 函数对象的__proto__ === Function.prototype
 - 如：
@@ -134,10 +137,16 @@ function Person(name, age, job) {
 
 - 有关于 Person.prototype.__ proto __
 ```javascript
-// Person.prototype 是一个普通对象，我们无需关注它有哪些属性，只要记住它是一个普通对象
+// prototype 是原型对象，也是一个普通对象，我们无需关注它有哪些属性，只要记住它是一个普通对象
 // 因为一个普通对象的构造函数 === Object （obj.constructor === object）
 // 所以 Person.prototype.__proto__ === Object.prototype （普通对象的__proto__ === Object.prototype）
-// 小总结第一点也可以得出 Person.prototype.__ proto __ === Object.prototype
+// 小总结第一点也可以得出 Person.prototype.__ proto __ === Object.prototype （普通对象的__proto__ === Object.prototype）
+```
+
+- 有关于 Function.prototype.__ proto __
+```javascript
+// 同上一点，prototype 是原型对象，也是一个普通对象，所以：
+// Function.prototype.__proto__ === Object.prototype
 ```
 
 - Object.prototype.__proto __
@@ -184,7 +193,7 @@ console.log(tidy.price) // 2000
 let dog = function(){};
 dog.prototype.price = 2000;
 let tidy = new dog();
-console.log(dog.price); //undefined
-console.log(tidy.price); // 2000
+console.log(dog.price); // undefined，price 属性存在于原型对象中
+console.log(tidy.price); // 2000，继承
 ```
 > 实例（tidy）和 原型对象（dog.prototype）存在一个连接。不过，要明确的真正重要的一点就是，这个连接是存在于实例（tidy）与构造函数的原型对象（dog.prototype）之间，而不是存在于实例（tidy）与构造函数（dog）之间
