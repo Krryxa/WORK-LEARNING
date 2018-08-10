@@ -45,22 +45,23 @@ const mutations = {
 }
 ```
 - 在组件中触发：(有命名空间的modules就加上命名空间)
+> 你可以在组件中使用 this.$store.commit('xxx') 提交 mutation，或者使用 mapMutations 辅助函数将组件中的 methods 映射为 store.commit 调用（需要在根节点注入 store）。
 ```javascript
-methods: {
-    handleClick() {
-      this.$store.commit('mutationName', newVal)
-    }
-}
-```
-- 可以使用辅助函数mapMutations直接将触发函数映射到methods上，这样就能在元素事件绑定上直接使用了
-```javascript
-import {mapMutations} from 'vuex'
+import { mapMutations } from 'vuex'
 
-//组件
 export default {
-  methods: mapMutations([
-    'mutationName'
-  ])
+  // ...
+  methods: {
+    ...mapMutations([
+      'increment', // 将 `this.increment()` 映射为 `this.$store.commit('increment')`
+
+      // `mapMutations` 也支持载荷：
+      'incrementBy' // 将 `this.incrementBy(amount)` 映射为 `this.$store.commit('incrementBy', amount)`
+    ]),
+    ...mapMutations({
+      add: 'increment' // 将 `this.add()` 映射为 `this.$store.commit('increment')`
+    })
+  }
 }
 ```
 
@@ -76,23 +77,24 @@ const actions = {
   }
 }
 ```
-- 在组件中触发：
+- 在组件中触发：(有命名空间的modules就加上命名空间)
+> 你在组件中使用 this.$store.dispatch('xxx') 分发 action，或者使用 mapActions 辅助函数将组件的 methods 映射为 store.dispatch 调用（需要先在根节点注入 store）：
 ```javascript
-methods: {
-  handleClick() {
-    this.$store.dispatch('actionName', newVal);
-  }
-}
-```
-- 其辅助函数是mapActions，与mapMutations类似，也是绑定在组件的methods上的。
-```javascript
-import {mapActions} from 'vuex'
+import { mapActions } from 'vuex'
 
-//组件
 export default {
-  methods: mapActions([
-    'actionName',
-  ])
+  // ...
+  methods: {
+    ...mapActions([
+      'increment', // 将 `this.increment()` 映射为 `this.$store.dispatch('increment')`
+
+      // `mapActions` 也支持载荷：
+      'incrementBy' // 将 `this.incrementBy(amount)` 映射为 `this.$store.dispatch('incrementBy', amount)`
+    ]),
+    ...mapActions({
+      add: 'increment' // 将 `this.add()` 映射为 `this.$store.dispatch('increment')`
+    })
+  }
 }
 ```
 
