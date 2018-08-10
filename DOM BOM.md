@@ -88,7 +88,7 @@ window.navigator.userProfile
 window.navigator.systemLanguage // 客户体系语言 zh-cn简体中文
 window.navigator.userLanguage // 用户语言,同上
 window.navigator.appVersion // 浏览器版本(包括 体系版本)
-window.navigator.userAgent// 用户代理头的字符串表示
+window.navigator.userAgent // 用户代理头的字符串表示
 window.navigator.onLine // 用户否在线
 window.navigator.cookieEnabled // 浏览器是否撑持cookie
 ```
@@ -96,9 +96,10 @@ window.navigator.cookieEnabled // 浏览器是否撑持cookie
 ### Location 对象
 > location 对象：表示载入窗口的URL，也可用 window.location 引用它
 ```javascript
+location.origin // 协议+域名+端口 （有兼容性，IE不兼容）
 location.href // 当前载入页面的完整URL
 location.portocol // URL中使用的协议，即双斜杠之前的部分，如http
-location.host // 服务器的名字，如www.wrox.com
+location.host // 域名，服务器的名字，如www.wrox.com
 location.hostname // 通常等于host，有时会省略前面的www
 location.port // URL声明的请求的端口，默认情况下，大多数URL没有端口信息，如8080
 location.pathname // URL中主机名后的部分，如/pictures/index.htm

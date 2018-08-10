@@ -35,6 +35,11 @@ str.valueOf() // 返回 String 对象的原始值
 String.fromCharCode(n1, n2, ..., nX) // 可接受一个或多个指定的 Unicode 值，然后返回一个字符串
 ```
 
+- 删除指定子串
+```javascript
+// 可以使用 replace 来删除
+```
+
 ## 讲一下 slice 方法 （面试）
 - str.slice(start, end)
 ```javascript
