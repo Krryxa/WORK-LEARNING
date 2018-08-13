@@ -1,4 +1,4 @@
-# virtual DOM、npm run/build 
+# virtual DOM、npm run dev/build 
 
 - virtual DOM 分为三个步骤：
 
