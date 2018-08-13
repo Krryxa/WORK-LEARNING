@@ -7,8 +7,7 @@
 3. patch() : 将差异应用到真实DOM树
 > 有的时候 第二步 可能与 第三步 合并成一步（Vue 中的patch就是这样）
 
-- 关于 vue 的 npm run dev 和 npm run build
-- 关于 vue 的 npm run dev 和 npm run build
+## 关于 vue 的 npm run dev 和 npm run build
 ```
 ├─build
 │   ├─build.js
@@ -38,9 +37,10 @@ package.json里面
 "build": "node build/build.js",
 ```
  
-- 意思：运行”npm run dev”的时候执行的是 build/dev-server.js 文件，运行”npm run build”的时候执行的是 build/build.js 文件。
+- 意思：运行“npm run dev”的时候执行的是 build/dev-server.js 文件，运行“npm run build”的时候执行的是 build/build.js 文件。
 
-- build文件夹分析
+### build 文件夹分析
+1. npm run dev 发生的事情
 > build/dev-server.js
 >> npm run dev 执行的文件 build/dev-server.js 文件，执行了：
 ```
@@ -53,8 +53,23 @@ package.json里面
 启动服务器监听特定端口（8080）
 自动打开浏览器并打开特定网址（localhost:8080）
 
-说明： express 服务器提供静态文件服务，不过它还使用了 http-proxy-middleware，一个 http 请求代理的中间件。前端开发过程中需要使用到后台的API的话，可以通过配置 proxyTable 来将相应的后台请求代理到专用的API服务器
+说明： express 服务器提供静态文件服务，不过它还使用了 http-proxy-middleware，
+一个 http 请求代理的中间件。前端开发过程中需要使用到后台的API的话，
+可以通过配置 proxyTable 来将相应的后台请求代理到专用的API服务器
 ```
+
+2. npm run build 发生的事情
+> build/build.js 构建环境下的配置
+
+>> build.js主要完成下面几件事：
+```
+loading 动画
+删除创建目标文件夹
+webpack 编译
+输出信息
+```
+
+---
 
 > build/webpack.base.conf.js
 >> dev-server 依赖的 webpack 配置是 webpack.dev.conf.js 文件，测试环境下使用的是webpack.prod.conf.js <br>
@@ -65,7 +80,7 @@ package.json里面
 配置 webpack 输出路径和命名规则
 配置模块 resolve 规则
 配置不同类型模块的处理规则
-这个配置里面只配置了.js、.vue、图片、字体等几类文件的处理规则，如果需要处理其他文件可以在 module.rules 里面配置。
+这个配置里面只配置了.js、.vue、图片、字体等几类文件的处理规则，如果需要处理其他文件可以在 module.rules 里面配置
 ```
 
 > build/webpack.dev.conf.js
@@ -94,17 +109,6 @@ check-version.js 完成对 node 和 npm 的版本检测
 ```
 > vue-loader.conf 则只配置了 css 加载器以及编译 css 之后自动添加前缀
 
-
-> build/build.js 构建环境下的配置，
-
->> build.js主要完成下面几件事：
-```
-loading 动画
-删除创建目标文件夹
-webpack 编译
-输出信息
-```
-
 > build/webpack.prod.conf.js
 >> 构建的时候用到的 webpack 配置来自 webpack.prod.conf.js，该配置同样是在 webpack.base.conf 基础上的进一步完善。主要完成下面几件事情：
 ```
@@ -121,7 +125,7 @@ webpack-bundle 分析
 >> config/index.js
 ```
 config 文件夹下最主要的文件就是 index.js 了
-在这里面描述了开发和构建两种环境下的配置，前面的 build 文件夹下也有不少文件引用了 index.js 里面的配置。
+在这里面描述了开发和构建两种环境下的配置，前面的 build 文件夹下也有不少文件引用了 index.js 里面的配置
 ```
 
 > config/dev.env.js、config/prod.env.js和config/test.env.js
