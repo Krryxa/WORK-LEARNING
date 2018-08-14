@@ -204,3 +204,19 @@ computed: {
   },
 },
 ```
+
+## 关于 vuex 的问答
+1. 问：使用Vuex只需执行 Vue.use(Vuex)，并在Vue的配置中传入一个store对象的示例，store是如何实现注入的？
+- 答：Vue.use(Vuex) 方法执行的是 install 方法，它实现了 Vue 实例对象的 init 方法封装和注入，使传入的 store 对象被设置到 Vue 上下文环境的 $store 中。因此在 Vue Component 任意地方都能够通过 this.$store 访问到该 store
+
+2. 问：在执行 dispatch 触发 action(commit同理)的时候，只需传入(type, payload)，action 执行函数中第一个参数 store 从哪里获取的？
+- 答：store 初始化时，所有配置的 action 和 mutation 以及 getters 均被封装过。在执行如 dispatch('submitOrder', payload) 的时候，actions 中 type 为 submitOrder 的所有处理方法都是被封装后的，其第一个参数为当前的 store 对象，所以能够获取到 { dispatch, commit, state, rootState } 等数据
+
+3. 问：Vuex 如何区分 state 是外部直接修改，还是通过 mutation 方法修改的？
+- 答：Vuex 中修改 state 的唯一渠道就是执行 commit('xx', payload) 方法，其底层通过执行 this._withCommit(fn) 设置 _committing 标志变量为 true，然后才能修改 state，修改完毕还需要还原 _committing 变量。外部修改虽然能够直接修改 state，但是并没有修改 _committing 标志位，所以只要 watch 一下 state，state change 时判断是否 _committing 值为 true，即可判断修改的合法性
+
+4. 问：调试时的“时空穿梭”功能是如何实现的？
+- 答：devtoolPlugin 中提供了此功能。因为 dev 模式下所有的 state change 都会被记录下来，'时空穿梭' 功能其实就是将当前的 state 替换为记录中某个时刻的 state 状态，利用 store.replaceState(targetState) 方法将执行 this._vm.state = state 实现
+
+5. 问：state 内部支持模块配置和模块嵌套，如何实现的？
+- 答：在 store 构造方法中有 makeLocalContext 方法，所有 module 都会有一个 local context，根据配置时的 path 进行匹配。所以执行如 dispatch('submitOrder', payload)这类 action 时，默认的拿到都是 module 的 local state，如果要访问最外层或者是其他 module 的 state，只能从 rootState 按照 path 路径逐步进行访问
