@@ -111,7 +111,7 @@ d.__proto__ === Function.prototype;
 - 如：
 ```JavaScript
 // 普通对象newObj 和 Object
-let newObj = new Object();
+let newObj = new Object(); // 或者 let newObj = {};
 // 因为 newObj.__proto__ === newObj.constructor.prototype
 // 因为 newObj.constructor === Object
 // 所以 newObj.__proto__ === Object.prototype
