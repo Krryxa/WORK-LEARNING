@@ -199,3 +199,12 @@ getBLen = str => {
   } 
 }  
 ```
+
+## 问题
+1. 去掉字符串中所有空格（正则表达式）
+> 去掉字符串首尾空格用 trim()
+```javascript
+handleLinkBlur () {
+  this.link = this.link.replace(/\s*/g, '');
+},
+```
