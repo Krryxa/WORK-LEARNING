@@ -1,11 +1,93 @@
 # virtual DOM、npm run dev/build 
 
+- Vue 通过建立一个虚拟 DOM 对真实 DOM 发生的变化保持追踪。请仔细看这行代码：
+```javascript
+return createElement('h1', this.blogTitle)
+```
+- createElement 到底会返回什么呢？其实不是一个实际的 DOM 元素。它更准确的名字可能是 createNodeDescription，因为它所包含的信息会告诉 Vue 页面上需要渲染什么样的节点，及其子节点。我们把这样的节点描述为“虚拟节点 (Virtual Node)”，也常简写它为“VNode”。“虚拟 DOM”是我们对由 Vue 组件树建立起来的整个 VNode 树的称呼。
+
+- 关于 createElement 方法，他是通过 render 函数的参数传递进来的，这个方法有三个参数: 
+1. 第一个参数主要用于提供 dom 的 html 内容，类型可以是字符串、对象或函数。比如 “div” 就是创建一个  div 标签 
+2. 第二个参数（类型是对象）主要用于设置这个 dom 的一些样式、属性、传的组件的参数、绑定事件之类，具体可以参考 官方文档 里这一小节的说明 
+3. 第三个参数（类型是数组，数组元素类型是 VNode）主要用于说是该结点下有其他结点的话，就放在这里
+
+
 - virtual DOM 分为三个步骤：
 
-1. createElement(): 用 JavaScript对象(虚拟树) 描述 真实DOM对象(真实树)
+1. createElement(): 用 JavaScript 对象(虚拟树) 描述 真实 DOM 对象(真实树)
 2. diff(oldNode, newNode) : 对比新旧两个虚拟树的区别，收集差异
 3. patch() : 将差异应用到真实DOM树
-> 有的时候 第二步 可能与 第三步 合并成一步（Vue 中的patch就是这样）
+> 有的时候 第二步 可能与 第三步 合并成一步（Vue 中的 patch 就是这样）
+
+## render 函数
+- 总结： 
+1. render方法的实质就是生成template模板； 
+2. 通过调用一个方法来生成，而这个方法是通过render方法的参数传递给它的； 
+3. 这个方法有三个参数，分别提供标签名，标签相关属性，标签内部的 html 内容 
+4. 通过这三个参数，可以生成一个完整的木模板
+
+- 备注：
+```
+render方法可以使用 JSX（react） 语法，但需要 Babel plugin 插件；
+render方法里的第三个参数可以使用函数来生成多个组件（特别是如果他们相同的话），只要生成结果是一个数组，且数组元素都是VNode即可；
+```
+- vue 推荐在绝大多数情况下使用template来创建我们的HTML。然而在一些场景中，我们真的需要JavaScript的完全编程的能力，这就是render函数，它比template更接近编译器。
+
+- 例子：
+实现如下的 template 效果
+```
+<h1>
+  <a name="hello-world" href="#hello-world">
+    Hello world!
+  </a>
+</h1>
+```
+在HTML层，我们决定这样定义组件接口：
+``` html
+<anchored-heading :level="1">Hello world!</anchored-heading>
+```
+```JavaScript
+<script type="text/x-template" id="anchored-heading-template">
+  <h1 v-if="level === 1">
+    <slot></slot>
+  </h1>
+  <h2 v-else-if="level === 2">
+    <slot></slot>
+  </h2>
+  <h3 v-else-if="level === 3">
+    <slot></slot>
+  </h3>
+  <h4 v-else-if="level === 4">
+    <slot></slot>
+  </h4>
+  <h5 v-else-if="level === 5">
+    <slot></slot>
+  </h5>
+  <h6 v-else-if="level === 6">
+    <slot></slot>
+  </h6>
+</script>
+```
+- 在这种场景中使用 template 并不是最好的选择：首先代码冗长，为了在不同级别的标题中插入锚点元素，我们需要重复地使用 slot
+
+- 虽然模板在大多数组件中都非常好用，但是在这里它就不是很简洁的了。那么，我们来尝试使用 render 函数重写上面的例子：
+```javascript
+Vue.component('anchored-heading', {
+  render: function (createElement) {
+    return createElement(
+      'h' + this.level,   // tag name 标签名称
+      this.$slots.default // 子组件中的阵列
+    )
+  },
+  props: {
+    level: {
+      type: Number,
+      required: true
+    }
+  }
+})
+```
+- 简单来说，这样代码精简很多，但是需要非常熟悉 Vue 的实例属性。在这个例子中，你需要知道当你不使用 slot 属性向组件中传递内容时，比如 anchored-heading 中的 Hello world!, 这些子元素被存储在组件实例中的 $slots.default中。如果你还不了解， 在深入 render 函数之前推荐阅读实例属性 API
 
 ## 关于 vue 的 npm run dev 和 npm run build
 ```
