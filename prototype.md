@@ -108,6 +108,7 @@ d.__proto__ === Function.prototype;
 - 只有函数对象 function 才具有 prototype 属性。这个属性是一个指针，指向一个对象：原型对象。这个对象的用途就是包含所有实例共享的属性和方法。原型对象也有属性，有个叫做 constructor，这个属性包含了一个指针，指回原构造函数
 - 普通对象的__proto__ === Object.prototype
 - 函数对象的__proto__ === Function.prototype
+- Function.prototype === Object.__ proto __ === 函数对象的__proto__
 - 如：
 ```JavaScript
 // 普通对象newObj 和 Object
@@ -135,7 +136,7 @@ function Person(name, age, job) {
 // 所以：person1.__proto__ === Person.prototype
 ```
 
-- 有关于 Person.prototype.__ proto __
+- Person.prototype.__ proto __ === Object.prototype
 ```javascript
 // prototype 是原型对象，也是一个普通对象，我们无需关注它有哪些属性，只要记住它是一个普通对象
 // 因为一个普通对象的构造函数 === Object （obj.constructor === object）
@@ -143,13 +144,13 @@ function Person(name, age, job) {
 // 小总结第一点也可以得出 Person.prototype.__ proto __ === Object.prototype （普通对象的__proto__ === Object.prototype）
 ```
 
-- 有关于 Function.prototype.__ proto __
+- Function.prototype.__ proto __ === Object.prototype
 ```javascript
 // 同上一点，prototype 是原型对象，也是一个普通对象，所以：
 // Function.prototype.__proto__ === Object.prototype
 ```
 
-- Object.prototype.__proto __
+- Object.prototype.__proto __ === null
 ```javascript
 // Object.prototype 对象也有proto属性，但它比较特殊，为 null，因为 null 处于原型链的顶端，这个只能记住
 // Object.prototype.__proto__ === null
