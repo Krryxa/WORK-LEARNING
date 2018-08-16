@@ -1,4 +1,4 @@
-# const、Object.assign、Object.keys、Object.values、Object.entries
+# const、Object 的相关方法
 
 ## const 
 ```javascript
@@ -215,5 +215,49 @@ for (let [k, v] of Object.entries(obj)) {
 let obj = { foo: 'bar', baz: 42 };
 let map = new Map(Object.entries(obj));
 map // Map { foo: "bar", baz: 42 }
+```
+
+## Object.freeze()
+- 阻止修改现有属性的特性和值，并阻止添加新属性（解决了 const 定义数组还可以继续 push 的痛点）
+1. 参数：要被冻结的对象
+2. 返回：被冻结的对象
+
+- 两种用法：Object.freeze( { } ) 和 Object.freeze( object )
+```javascript
+Object.freeze( { } )：
+
+const a = Object.freeze({
+	name: "nihao",
+	age: 10
+});
+console.log(a.name);	// nihao
+a.name = "nihao2";
+console.log(a.name);	// nihao    修改属性无效
+
+
+Object.freeze( object )：
+
+const b = {
+  name: 'nihao',
+};
+Object.freeze(b);
+console.log(b.name);	// nihao
+b.name = "nihao2";
+console.log(b.name);	// nihao
+```
+
+## Object.seal()
+- 让一个对象密封，并返回被密封后的对象。密封对象是指那些不能添加新的属性，不能删除已有属性，以及不能修改已有属性的可枚举性、可配置性、可写性
+- 但可以修改已有属性的值的对象
+
+```javascript
+let a = {
+  name: 'krry',
+}
+
+Object.seal(a);
+console.log(a.name);	// krry
+a.name = "xiaoyue";
+console.log(a.name);	// xiaoyue    修改属性成功
 ```
 
