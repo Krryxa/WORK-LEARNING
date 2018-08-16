@@ -28,33 +28,38 @@ arr.b = '100'; // 自定义私有属性
 
 // for循环 速度最快
 for (let i = 0; len = arr.length, i < len; i++) { // 编程式
-    console.log("for循环"+arr[i]);
+  console.log("for循环"+arr[i]);
 }
 
 
 // forEach 不支持return和break，无论如何都会遍历完，
 arr.forEach(function(item){
-    console.log("forEach循环"+item);
+  console.log("forEach循环"+item);
 });
 
 
 // for-in 遍历的是 key 值，且 key 会变成字符串类型，包括数组的私有属性也会打印输出
 for(let key in arr){
-    console.log("for in循环"+key);
-    console.log(typeof key);
+  console.log("for in循环"+key);
+  console.log(typeof key);
 }
 
 
-// for-of 遍历的是值 val，只能遍历数组 （不能遍历对象）
+// for-of 遍历的是值 val，只能遍历数组/字符串 （不能遍历对象）
 for(let val of arr){
-    console.log("for of循环"+val);
+  console.log("for of循环"+val);
 }
+// for of 可以遍历字符串，并将字符串分解为单独的字符串
+let a='lang';
+for (item of a){
+  console.log(item); // l a n g
+} 
 
 // Object.keys 将对象的 key 作为新的数组，这样 for-of 循环的就是原数组的 key 值
 let obj = {school:'haida',age:20};
 // 变成 ['school','age']
 for(let val of Object.keys(obj)){
-    console.log(obj[val]);
+  console.log(obj[val]);
 }
 ```
 

@@ -28,6 +28,7 @@ str.toUpperCase() // 把字符串转换为大写
 str.includes() // 判断字符串是否包含某个子串
 str.trim() // 去除字符串两边的空白
 str.valueOf() // 返回 String 对象的原始值
+str.repeat(n) // 返回 str 重复 n 次的新字符串
 ```
 
 - 创建字符串：
