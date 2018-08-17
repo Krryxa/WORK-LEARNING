@@ -1,5 +1,8 @@
 # 面试 - 未知点(1)
 
+[面试 - 未知点(1)](https://github.com/Krryxa/WORK-LEARNING/issues/26)<br>
+[面试 - 未知点(2)](https://github.com/Krryxa/WORK-LEARNING/issues/35)
+
 ## css3
 1. 动画 animation
 2. transform 有scale（0.5）、rotate（旋转，单位deg）
