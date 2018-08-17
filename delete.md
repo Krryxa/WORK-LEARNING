@@ -19,10 +19,12 @@ delete object['property']
 1. 可以删除隐式全局变量，但不可删除显示全局变量，隐式全局变量其实是 global 对象 window 的属性
 ```javascript
 x = 10; // 未加关键字，属于全局变量 Window 的属性
-let y = 20; // 只是定义的变量
+let y = 20; // 只是定义的变量，没有挂载到 window
+var z = 30; // 使用 var 关键字，有挂载到 Window 上，但是也无法 delete（configurable: false）
 
 delete x; // true 删除成功
 delete y; // false 不能删除
+delete z; // false 不能删除
 ```
 
 2. 内置对象的内置属性不能被删除，用户自定义的属性可以被删除

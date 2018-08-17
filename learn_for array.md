@@ -221,7 +221,8 @@ console.log(myArrs); // 输出 Banana,Orange,Mango
 // 在有第三个参数的时候，如果设置 howmany 大于0，则就可以又删除该下标元素，又可以新增元素在这个下标，也就是替换
 ```
 
-## 额外谈一下arguments
+## 额外谈一下 arguments
+- 箭头函数本身不能使用 arguments，如果该箭头函数外部包含 function,在函数的调用时，箭头函数会将外部 arguments 拿来使用
 ```JavaScript
 // arguments 是一个对应于传递给函数的参数的类数组对象
 // 此对象包含传递给函数的每个参数的条目，第一个条目的索引从0开始。

@@ -1,4 +1,4 @@
-# 面试 - 落下的点
+# 面试 - 未知点(1)
 
 ## css3
 1. 动画 animation
@@ -9,6 +9,24 @@
 7. ::selection 选中的时候
 
 ## javascript
+> js 数据类型：String Number Boolean Array undefined null Object
+- 对于复杂数据类型 object，其实 typeof null 返回的也是 object，因为本质上 null 就是一个占位用的对象。另一方面，数组 Array 也不能用 typeof 检测数据类型，因为同样会返回 object
+
+- 因此，如果想要检测bar是不是object，可以这样子：
+```javascript
+console.log((bar !== null) && (tiopnuiop[yuiop[]\\]poi456/ypeof bar ==='object'))
+// 当然，如果认为 function 也是 object，可以用下面的语句
+console.log((bar !== nul)&& (typeof bar ==='object')||(typeof bar ==='function'))
+```
+- 除此以外，还有比如 Array 的情况，因为 Array 也会返回 object，检测是否是 Array 的方法：
+```javascript
+// 以下三种方法，如果是数组，返回 true
+console.log(bar instanceof Array);
+console.log(Array.isArray(bar)); // ES5方法
+console.log(Object.prototype.toString.call(arr) === '[object Array]');
+```
+---
+
 1. addEventListener(event, function, useCapture) 参数详解
 ```
 event 必须。字符串，指定事件名。
@@ -24,19 +42,21 @@ false- 默认。事件句柄在冒泡阶段执行
 ```
 - 事件委托：[https://github.com/Krryxa/WORK-LEARNING/blob/master/event_entrustment.md](https://github.com/Krryxa/WORK-LEARNING/blob/master/event_entrustment.md)
 
-
+---
 2. 字符串转数组 split
+---
 3. 数组转字符串 join
+---
 4. 获取字符串后三位（提取字符串的方法）str.slice(-3)
 - 字符串方法易忘点：[https://github.com/Krryxa/WORK-LEARNING/blob/master/learn_string.md](https://github.com/Krryxa/WORK-LEARNING/blob/master/learn_string.md)
-
+---
 5. promise 以及为什么要使用它
 > promise 可解决的问题：<br>
 > 可以支持多个并发的请求，获取并发请求返回的数据<br>
 > 解决回调地狱的问题
 - 详看：[https://github.com/Krryxa/WORK-LEARNING/blob/master/promise.md](https://github.com/Krryxa/WORK-LEARNING/blob/master/promise.md)
 
-
+---
 6. 循环一个对象，如何区分是自己的属性还是继承来的属性 （涉及到原型和原型链）
 ```javascript
 function Obj () {
@@ -63,7 +83,7 @@ for (let key in oo) {
   }
 }
 ```
-
+---
 7. 介绍一下闭包和闭包常用场景
 - 详见：[https://github.com/Krryxa/WORK-LEARNING/blob/master/closure.md](https://github.com/Krryxa/WORK-LEARNING/blob/master/closure.md)
 > 背景例子：计数器的困境：<br><br>
