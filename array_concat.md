@@ -79,7 +79,7 @@ let newArr = [];
 newArr = arr.toString().split(',').map(item => +item);
 console.log(newArr);
 
-// reduce 写法
+// reduce 递归写法
 let flattenDeep = (arr) => Array.isArray(arr) ? arr.reduce( (a, b) => [...flattenDeep(a), ...flattenDeep(b)] , []) : [arr];
 newArr = flattenDeep(arr);
 console.log(newArr);
