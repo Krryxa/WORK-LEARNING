@@ -17,12 +17,16 @@ for (let i = 0; i < 10000; i++) {
 }
 
 // 1. toString、split、map （支持多维数组~~~写法简便，速度又快）
-// 注意：数组元素非数字的时候需要改一下
+// 全部是数字类型，重新映射 map，不是字符串类型就不用 map
 // 用时：0.246s
 let newArr = [];
 let nowTime = new Date();
 newArr = arr.toString().split(',').map(item => +item);
 console.log(new Date() - nowTime, 'toString、split、map');
+
+// 全部数字类型的：arr.toString().split(',').map(Number); 
+// 全部字符串类型的：arr.toString().split(','); 
+
 
 
 // 2. reduce + concat，（数组元素较短时推荐，写法简便）
@@ -75,7 +79,7 @@ let arr = [1, [[2], [3, [4]], 5], [11, [21, [22, 22.1, 22.3], 31], 33, 40]];
 let newArr = [];
 
 // toString、split、map （写法简便）
-// 注意：数组元素非数字的时候需要改一下
+// 注意：数组元素非数字的时候不需要 map
 newArr = arr.toString().split(',').map(item => +item);
 console.log(newArr);
 
