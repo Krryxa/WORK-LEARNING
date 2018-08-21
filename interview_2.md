@@ -1,7 +1,8 @@
 # 面试 - 未知点(2)
 
 [面试 - 未知点(1)](https://github.com/Krryxa/WORK-LEARNING/issues/26)<br>
-[面试 - 未知点(2)](https://github.com/Krryxa/WORK-LEARNING/issues/35)
+[面试 - 未知点(2)](https://github.com/Krryxa/WORK-LEARNING/issues/35)<br>
+[面试 - 未知点(3)](https://github.com/Krryxa/WORK-LEARNING/issues/37)
 
 ## js 相关
 1. 以下两个函数是否等价
@@ -38,6 +39,7 @@ return undefined
 - ==：等同，比较运算符，两边值类型不同的时候，先进行类型转换，再比较；
 - ===：恒等，严格比较运算符，不做类型转换，类型或值不同就是不等；
 - Object.is() 是 ES6 新增的用来比较两个值是否严格相等的方法，与 === 的行为基本一致
+- 开发过程中推荐使用全等 === 和不全等 !== 操作符，保持代码中数据类型的完整性
 ---
 - === 注意点：
 > 如果两个值中出现一个是 NaN，那么不相等（判断一个值是否是 NaN，可以用 isNaN() 或 Object.is() 来判断）
@@ -53,16 +55,21 @@ NaN === NaN // false
 ---
 
 3. NaN 是什么？它是什么类型？如何检测一个变量是不是NaN？
-- 答案： NaN 即Not A Number，但实际上它是 Number 类型 typeof NaN 将会返回 Number。
+- 答案： NaN 即 Not A Number，但实际上它是 Number 类型 typeof NaN 将会返回 Number
 - 这个东西比较厉害，因为
 ```javascript
 NaN === NaN  // false
+NaN == NaN // false
+
+// 注意点：
+null === undefined // false
+null == undefined // true
 ```
-你会发现，它自己都不等于它自己，因此判断变量是否是它，不能使用 ===， 可以使用 isNaN 方法或 Object.is()
+你会发现，它自己都不等于它自己，且 NaN 不等于任何，因此判断变量是否是它，不能使用 ===， 可以使用 isNaN 方法或 Object.is()
 ```javascript
 // 检查变量是否是 NaN
 isNaN(bar);
-Object.is(bar,NaN); // ES6方法，这个方法会修正 js 中的一些小 bug
+Object.is(bar, NaN); // ES6方法，这个方法会修正 js 中的一些小 bug
 ```
 - Object.is()方法，要求严格相等，且 Object.is(NaN,NaN) 会返回 true
 
