@@ -9,9 +9,11 @@
 > undefined：表示一个变量最原始的状态，而非人为操作的结果<br>
 > null：表示一个对象被人为的重置为空对象，而非一个变量最原始的状态
 
-- 《JavaScript高级程序设计》一书，书中讲到相等操作符 == 时说，要比较相等性之前，不能将 null 和 undefined 转换成其他任何值，但要记住 null == undefined 会返回 true；
+《JavaScript高级程序设计》一书 53 页：由于相等和不相等操作符存在类型转换问题，而为了保持代码中数据类型的完整性，我们推荐使用全等和不全等操作符
 
-- Undefined 和 Null 是 Javascript 中两种特殊的原始数据类型(Primary Type)，它们都只有一个值，分别对应 undefined 和 null ，这两种不同类型的值，即有着不同的语义和场景，但又表现出较为相似的行为：
+记住：null == undefined 会返回 true；null === undefined 会返回 false；
+
+Undefined 和 Null 是 Javascript 中两种特殊的原始数据类型(Primary Type)，它们都只有一个值，分别对应 undefined 和 null ，这两种不同类型的值，即有着不同的语义和场景，但又表现出较为相似的行为：
 
 ### undefined
 >> undefined 的字面意思就是未定义的值，这个值的语义是，希望表示一个变量最原始的状态，而非人为操作的结果。这种原始状态会在以下 4 种场景中出现：
