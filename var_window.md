@@ -64,3 +64,41 @@ let a = 100;
 2. const 的作用域与 let 相同，只在声明所在的块级作用域内有效，并且也是和 let 一样不可以重复进行声明
 
 注意点：const arr = [1,2]; arr.push(3); 是成功的
+
+## 面试题
+```javascript
+var funcs = [];
+for (var i=0; i<10; i++) {
+  funcs.push(function () {console.log(i)});
+}
+funcs.forEach(function (func) {
+  func();
+});
+```
+一看就知道输出 10 个 10，但是如果想要依次输出 0 到 9 呢？
+
+1. 闭包可解决
+```javascript
+// 函数自执行，闭包解决方案，直接把每次循环的数值代进去了
+var funcs = [];
+for (var i=0; i<10; i++) {
+  funcs.push(
+    (function (value) {
+      return function() {console.log(value)}
+    })(i) // 函数自执行，这里不能加分号
+  );
+}
+funcs.forEach(function (func) {
+  func();
+});
+```
+
+2. es6 语法
+```javascript
+// 使用 let
+const funcs = [];
+for (let i=0; i<10; i++) {
+  funcs.push( () => console.log(i));
+}
+funcs.forEach( func => func());
+```
