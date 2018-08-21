@@ -82,7 +82,7 @@ Object.prototype.toString.call(arr); // [object Array]
 虽然 undefined 和 null 的语义和场景不同，但总而言之，它们都表示的是一个无效的值。 因此，在JS中对这类值访问属性时，都会得到异常的结果：
 ```javascript
 Cannot read property 'foo' of null
-Cannot read property 'foo' of null
+Cannot read property 'foo' of undefined
 ```
 
 ECMAScript 规范认为，既然 null 和  undefined 的行为很相似，并且都表示 一个无效的值，那么它们所表示的内容也具有相似性，即有
