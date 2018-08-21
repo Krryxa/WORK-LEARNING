@@ -38,6 +38,12 @@ alert(b);// undefined
 var b = 200;
 ```
 > 先说第二段代码，var 声明的全局变量 b 在 js 中会进行代码提升，也就是说 var b = 200; 会被分解为 var b; b=200; 代码解析的第时候会将 var b;提升到最前面，并且在内存中开辟一个空间，由于 b 没有被赋值，默认为 undefined
+```javascript
+// 上面第二段代码等同于：
+var b;
+alert(b);
+b = 200;
+```
 
 > 第一段代码中当 js 执行 alert() 函数时候由于没有进行 var 声明，变量没有被提升，不存在内存开辟，所以在 alert 时候直接报错
 - 在 ECMAScript6 标准中,一个重要的概念就是“JavaScript严格模式”，需要在最前面加上"use strict";
