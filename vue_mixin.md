@@ -75,7 +75,7 @@ Vue.mixin(filter)
 ## 包装插件
 - 接下来简单应用一下 Vue 中插件的制作方法。创建插件之后，就可以 Vue.use(myPlugin) 来使用了。
 
-首先附上插件的 [官方文档](https://cn.vuejs.org/v2/guide/plugins.html)
+- 首先附上插件的 [官方文档](https://cn.vuejs.org/v2/guide/plugins.html)
 
 - 一句话解释，包装的插件需要一个 install 的方法将插件装载到 Vue 上
 
