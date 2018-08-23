@@ -60,3 +60,14 @@ a:active {color: #0000FF} /* 选定的链接 */
   overflow: hidden;
 }
 ```
+
+## 画一个三角形
+```css
+.san {
+  width: 0;
+  height: 0;
+  border-left: 50px solid transparent;  
+  border-right: 50px solid transparent;
+  border-bottom: 100px solid #ff0066;
+}
+```
