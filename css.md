@@ -15,8 +15,10 @@ a:link {color: #FF0000} /* 未访问的链接 */
 a:visited {color: #00FF00} /* 已访问的链接 */
 a:hover {color: #FF00FF} /* 鼠标移动到链接上 */
 a:active {color: #0000FF} /* 选定的链接 */
-:after{} /* 选择器在被选元素的内容后面插入内容。使用 content 属性来指定要插入的内容。 */
+::before {} /* 选择器在被选元素的前面插入内容和定义css，使用 content 属性来指定要插入的内容。 */
+::after {} /* 选择器在被选元素的后面插入内容和定义css，使用 content 属性来指定要插入的内容。 */
 ```
+> 若 background 来装载图片，使用 filter: blur(3px); 使背景图片虚化，当准备做图片懒加载的时候，使用了 ::before{} 在被选元素的前面插入内容，且设置 z-index: -1，使用 content 属性定义插入内容的文本信息，这样子来做图片懒加载，当背景图片加载完成，会自动覆盖 ::before{} 的内容
 ## box-sizing
 - content-box 是W3C的标准盒模型，元素宽度 = 内容宽度 + padding + border：意思是 padding 和 border 会增加元素的宽度，以至于实际上的 width 大于原始设定的 width。
 - border-box 是ie的怪异盒模型，元素宽度 = 设定的宽度，已经将 padding 和 border 包括进去了，比如有时候在元素基础上添加内距 padding 或 border 会将布局撑破，但是使用 border-box 就可以轻松完成
@@ -27,6 +29,7 @@ a:active {color: #0000FF} /* 选定的链接 */
 
 ## + 选择器
 - '+' 选择器 相邻兄弟选择器（Adjacent sibling selector）可选择紧接在另一元素后的元素，且二者有相同父元素
+- 可用于某元素的 hover 的时候，需要控制兄弟元素，就需要用到 + 选择器
 
 ## css 中的单位
 - em：相对于父级元素的字体大小：1em（当前字体大小），2em（当前字体大小的两倍）
