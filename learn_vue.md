@@ -149,6 +149,29 @@ export default new Router({
 
 ```
 
+6. 路由高级配置
+例如：可选的动态路径参数、匹配零个或多个、一个或多个，甚至是自定义正则匹配
+```js
+const router = new VueRouter({
+  mode: 'history',
+  base: __dirname,
+  routes: [
+    { path: '/' },
+    // params are denoted with a colon ":"
+    { path: '/params/:foo/:bar' },
+    // a param can be made optional by adding "?"
+    { path: '/optional-params/:foo?' },
+    // a param can be followed by a regex pattern in parens
+    // this route will only be matched if :id is all numbers
+    { path: '/params-with-regex/:id(\\d+)' },
+    // asterisk can match anything
+    { path: '/asterisk/*' },
+    // make part of th path optional by wrapping with parens and add "?"
+    { path: '/optional-group/(foo/)?bar' }
+  ]
+})
+```
+
 ## vuex
 [内容过多，点击观看](https://github.com/Krryxa/WORK-LEARNING/blob/master/learn_vuex.md)
 
@@ -402,7 +425,3 @@ is 的值为：已注册组件的名字，或一个组件的选项对象
 </table>
 ```
 这两种写法表达的意思是一样的，但是第一种写法是不符合 html 语法验证的，所以采用第二种写法
-
-## 路由切换回到顶部的问题
-1. 可在路由配置文件中，提供一个 scrollBehavior 方法（还可以设置“滚动到锚点”的行为）
-2. 可在路由导航守卫 router.beforeEach 设置滚动条置顶
