@@ -79,3 +79,94 @@ add();
 - 由于闭包会使得函数中的变量都被保存在内存中，内存消耗很大，所以不能滥用闭包，否则会造成网页的性能问题，在IE中可能导致内存泄露。解决方法是，在退出函数之前，将不使用的局部变量全部删除。
 
 - 闭包会在父函数外部，改变父函数内部变量的值。所以，如果你把父函数当作对象（object）使用，把闭包当作它的公用方法（Public Method），把内部变量当作它的私有属性（private value），这时一定要小心，不要随便改变父函数内部变量的值。
+
+## 闭包面试题
+1. 
+```js
+function a(){
+  var n = 0;
+  function inc(){
+    n++; 
+    console.log(n);
+  }
+  return inc;
+}
+var c = a();
+c();  //控制台输出1
+c();  //控制台输出2
+```
+在这里，控制台两次输出不一样？？？为什么？？变量n不是重新赋值了吗？？
+
+并没有，在这里，var c = a(); 这段代码意思是将 a 方法的返回值赋值给变量 c ，那么 a() 的返回值就是 inc ,也就 function inc() ;
+
+后面执行两次 c(); c(); 实际上是执行两次的  inc(); 因为function一直引用着a()，所以n没有回收，也就是说，n的值一直在引用着;
+
+自然第一次执行 c() 打印1，第二次执行 c() 打印2；
+
+
+2. 
+```js
+function createFunctions(){
+  var result = [];
+  for (var i=0; i < 10; i++){
+    result[i] = function(){
+      return i;
+    };
+  }
+  return result;
+}
+var funcs = createFunctions();
+for (var i=0; i < funcs.length; i++){
+  console.log(funcs[i]()); // 输出十个 10
+}
+```
+
+3. 经典面试题
+```js
+for (var i = 0; i < 5; i++) {
+  setTimeout(function() {
+    console.log(i);
+  }, 1000 * i); // 一开始输出一个5，然后每隔一秒输出一个5，一共五个5
+}
+```
+上面代码一开始输出一个 5（i = 0，定时器的时间 0，延迟执行，所以执行的时候 i=5，所以立刻输出一个5），然后每隔一秒再输出一个 5，一共 5 个 5
+
+- 加上闭包
+```js
+for (var i = 0; i < 5; i++) {
+  (function(i) {
+    setTimeout(function() {
+      console.log(i);
+    }, i * 1000);
+  })(i); // 一开始输出一个0，然后每隔一秒输出1 ，2 ，3 ，4
+}
+```
+加上闭包之后，一开始输出一个0，然后每隔一秒输出1 ，2 ，3 ，4，在这里，内部方法引用了外部 i 局部变量，所以 i 的值传递到内部；
+
+- 删掉 i 之后
+```js
+for (var i = 0; i < 5; i++) {
+  (function() {
+    setTimeout(function() {
+      console.log(i);
+    }, i * 1000);
+  })(i); // 一开始输出一个 5，然后每隔一秒输出 5 ， 5 ， 5 ， 5，一共 5 个 5
+}
+```
+这样子的话，内部其实没有对 i 保持引用，其实会变成每隔一秒输出 5，一开始输出5，共5个5
+
+- 再改成这样
+```js
+for (var i = 0; i < 5; i++) {
+  setTimeout((function(i) {
+    console.log(i);
+  })(i), i * 1000);
+}
+```
+这里给 setTimeout 传递了一个立即执行函数。
+
+setTimeout 可以接受函数或者字符串作为参数，那么这里立即执行函数应该是个 undefined ，也就是说等价于：setTimeout(undefined, ...);
+
+而立即执行函数会立即执行，那么应该是立马输出的。
+
+也就是立马输出 0 到 4 
