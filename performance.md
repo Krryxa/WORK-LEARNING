@@ -5,6 +5,10 @@
 ![](https://raw.githubusercontent.com/Krryxa/WORK-LEARNING/master/images/p_5.jpg)
 - 可以看到，六个绿色条并发请求，四个灰色条等待请求，最下面三个绿色条3.4s后才触发请求
 
+## 减少操作dom方法
+1. 插入大量dom元素时，可以使用innerHTML替代逐个构建元素
+2. 处理列表子元素的事件时，可以使用事件委托
+
 ## 优化图片的加载
 
 1. 图片懒加载，优先加载浏览器可视区域的图片
