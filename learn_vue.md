@@ -17,6 +17,19 @@
 - vue-resource
 - axios
 
+## vue生命周期
+1. beforeCreate
+2. created
+3. beforeMount
+4. mounted
+5. beforeUpdate：数据更新时调用
+6. updated：数据更新后调用
+7. activated：keep-alive 组件激活时调用
+8. deactivated：keep-alive 组件停用时调用
+9. beforeDestroy
+10. destroyed
+
+
 ## vue-cli
 - 是快速构建单页应用的脚手架
 - vue-cli 大大降低了webpack 的使用难度，支持热更新，有webpack-dev-server的支持，相当于启动了一个请求服务器，给你搭建了一个测试环境，只关注开发

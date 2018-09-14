@@ -73,3 +73,25 @@ let _students = JSON.parse(`[
 let res = sortStudents(_students);
 console.log(res);
 ```
+
+## 真正实现用同步的方式写异步代码的是：
+async await
+```js
+async await
+function load () {
+  return new Promise((resolve, reject) => {
+    // 异步处理
+  });
+}
+load().then(..);
+```
+
+## HTTP请求方法
+1. get
+2. post
+3. head：类似于get请求，只不过返回的响应中没有具体的内容，用于获取报头
+4. put：从客户端向服务器传送的数据取代指定的文档的内容
+5. delete：请求服务器删除指定的页面
+6. connect：HTTP/1.1协议中预留给能够将连接改为管道方式的代理服务器
+7. options：允许客户端查看服务器的性能
+8. trace：回显服务器收到的请求，主要用于测试或诊断
