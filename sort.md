@@ -18,6 +18,15 @@
 > 记：大于 0 交换顺序
 
 ## 题目
+有如下数据：
+```js
+[
+  {"name":"张三","class":2,"score":64},
+  {"name":"李四","class":1,"score":80},
+  {"name":"王五","class":1,"score":90},
+  {"name":"赵六","class":4,"score":94}
+]
+```
 实现：
  * 按照 class 从小到大排列
  * 如果 class 相同，则按照 score 从大到小排列
