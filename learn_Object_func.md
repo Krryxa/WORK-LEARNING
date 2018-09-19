@@ -261,3 +261,46 @@ a.name = "xiaoyue";
 console.log(a.name);	// xiaoyue    修改属性成功
 ```
 
+## js 判断对象是否为空对象的几种方法
+1. 将json对象转化为 json 字符串，再判断该字符串是否为 '{}'
+```js
+let data = {};
+let b = (JSON.stringify(data) == "{}");
+alert(b); //true
+```
+
+2.for in 循环判断
+```js
+let obj = {};
+let b = function() {
+  for(let key in obj) {
+    return false;
+  }
+  return true;
+}
+alert(b());//true
+```
+
+3. jquery 的 isEmptyObject 方法
+此方法是 jquery 将 2 方法 (for in) 进行封装，使用时需要依赖 jquery
+```js
+let data = {};
+let b = $.isEmptyObject(data);
+alert(b);//true
+```
+
+4. Object.getOwnPropertyNames()方法
+此方法是使用 Object 对象的 getOwnPropertyNames 方法
+```js
+let data = {};
+let arr = Object.getOwnPropertyNames(data);
+alert(arr.length == 0);//true
+```
+
+5. 使用 ES6 的Object.keys()方法，
+是 ES6 的新方法, 返回值也是对象中属性名组成的数组
+```js
+let data = {};
+let arr = Object.keys(data);
+alert(arr.length == 0);//true
+```
