@@ -1,24 +1,28 @@
-# for 循环 和 Array 数组对象方法
+几种 for 循环
+> for for-in for-of forEach map
 
 
-## for for-in for-of forEach效率比较
+## for for-in for-of forEach map 效率比较
 
-- 四种循环，遍历长度为 1000000 的数组叠加，得到的时间差：
+四种循环，遍历长度为 1000000 的数组叠加，得到的时间差：
+```
+for 9
+for-in 293
+for-of 22
+forEach 50
+map 285
+```
+效率速度：for > for-of > forEach > map ≈ for-in
 
-        for 3
-        for-in 250
-        for-of 7
-        forEach 44
+for 循环本身比较稳定，是for循环的i是Number类型，开销较小
 
-- 效率速度：for > for-of > forEach > for-in
+for-of 循环的是val，且只能循环数组，不能循环对象
 
-- for循环本身比较稳定，是for循环的i是Number类型，开销较小
+forEach 不支持 return 和 break，一定会把所有数据遍历完毕，无返回值
 
-- for-of 循环的是val，且只能循环数组，不能循环对象
+map 与 forEach 类似，也不支持 return 和 break，但有返回值，返回一个新数组
 
-- forEach 不支持 return 和 break，一定会把所有数据遍历完毕
-
-- for-in 需要穷举对象的所有属性，包括自定义的添加的属性也会遍历，for...in的key是String类型，有转换过程，开销比较大
+for-in 需要穷举对象的所有属性，包括自定义的添加的属性也会遍历，for...in 的 key 是 String 类型，有转换过程，开销比较大
 
 ```javascript
 // 面试： for, forEach, for-in, for-of（es6）
@@ -63,7 +67,7 @@ for(let val of Object.keys(obj)){
 }
 ```
 
-## JavaScript Array 数组对象方法
+## Array 数组对象方法
 
 - 不改变原数组：concat、every、filter、find、includes、indexOf、isArray、join、lastIndexOf、map、reduce、slice、some、toString、valueOf
 
@@ -276,7 +280,14 @@ function forEachadd(my_arr){
     my_arr.forEach(val => {
        sum += val;
     });
-}  
+}
+
+function mapadd(my_arr){  
+    let sum = 0;  
+    my_arr.map(val => {
+       sum += val;
+    });
+}
   
 function timeTest(func,my_arr,str) {  
     var start_time = null;  
@@ -290,5 +301,6 @@ function timeTest(func,my_arr,str) {
 timeTest(foradd,arr,'for');  
 timeTest(forinadd,arr,'for-in');  
 timeTest(forofadd,arr,'for-of'); 
-timeTest(forEachadd,arr,'forEach');   
+timeTest(forEachadd,arr,'forEach');
+timeTest(mapadd,arr,'map');   
 ```
