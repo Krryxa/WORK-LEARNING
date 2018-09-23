@@ -214,9 +214,10 @@ console.log(fse); // 输出 Lemon,Pineapple,Banana,Orange,Apple,Mango
 
 
 // splice 用于插入、删除或替换数组的元素
+// 返回值 删除元素的数组
 // 改变原数组
 let myArrs = ["Banana", "Orange", "Apple", "Mango"];
-myArrs.splice(2,1); // 从数组下标为 2 开始删除，删除 1 个元素
+myArrs.splice(2,1); // 从数组下标为 2 开始删除，删除 1 个元素，返回值 ["Apple"]
 console.log(myArrs); // 输出 Banana,Orange,Mango
 // splice(index, howmany, item1, item2, ..., itemX);
 // index: 必须，表示添加 / 删除元素的下标，（包括此下标）
