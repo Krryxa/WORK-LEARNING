@@ -94,7 +94,7 @@ bottom: 0;
 ```
 
 ## css 设置垂直居中
-元素的垂直居中也是我们日常网页布局中经常会遇到的问题,所以我在此提供一些解决方法,希望可以给予有需要的人一些借鉴和参考.
+元素的垂直居中也是我们日常网页布局中经常会遇到的问题，在此总结
 
 html代码:
 ```html
@@ -103,7 +103,8 @@ html代码:
 </div>
 ```
 
-(1) 行内文本垂直居中
+### 已知高度
+1. 行内文本垂直居中
 
 css 代码：
 ```css
@@ -116,12 +117,12 @@ css 代码：
 }
 ```
 
-(2) 行内非文本垂直居中（以 img 为例）
+2. 行内非文本垂直居中（以 img 为例）
 
 html代码:
 ```html
 <div class="parent">
-    <img src="image.png" alt="" />
+  <img src="image.png" alt="" />
 </div>
 ```
 css代码
@@ -135,7 +136,8 @@ css代码
   line-height: 100px;
 }
 ```
-(3) 未知高度的块级元素垂直居中
+
+3. margin-top
 html代码:
 ```html
 <div class="parent">
@@ -145,14 +147,51 @@ html代码:
   </div>
 </div>
 ```
-第一种方法(不需要加padding):
+```css
+#parent {
+  height: 300px;
+}
+#child {
+  height: 40px;
+  margin-top: 130px; /* 这个是父元素的高度减去这个元素的高度除以二计算得到的 */
+  border: 1px solid #ccc;
+}
+```
+
+4. 绝对定位 margin-top
+```css
+#parent {
+  height: 300px;
+  position: relative;
+}
+#child {
+  height: 40px;
+  position: absolute;
+  top: 50%;
+  margin-top: -20px; /* 这个是当前元素的高度的一半的负值 */
+  border: 1px solid #ccc;
+}
+```
+
+## 未知高度
+
+html代码:
+```html
+<div class="parent">
+  <div class="child">
+    <!--.child的高度未知,父元素要有高度-->
+    sddvsds dfvsdvds
+  </div>
+</div>
+```
+
+1. transform translateY
 css代码:
 ```css
 .parent {
   width: 100%;
   height: 100%;
   position: relative;
-  /*display: table;*/
 }
 .child {
   width: 500px;
@@ -162,7 +201,8 @@ css代码:
   transform: translateY(-50%);
 }
 ```
-第二种方法(不使用transform):
+
+2. margin: auto
 css代码:
 ```css
 .parent {
@@ -182,18 +222,8 @@ css代码:
   margin: auto;
 }
 ```
-第三种方法(需要加padding):
-css代码:
-```css
-#parent {
-  padding: 5% 0;
-}
-#child {
-  padding: 10% 0;
-}
-```
-第四种方法:
-（使用 display: table 此种方法也适用于行内文本元素的居中）:
+
+3. table 布局
 css代码:
 ```css
 .parent {
@@ -206,7 +236,8 @@ css代码:
   vertical-align: middle;
 }
 ```
-第五种方法（flex 布局，这里需要考虑兼容性）
+
+4. flex 布局
 css 代码:
 ```css
 .parent {
@@ -215,26 +246,5 @@ css 代码:
   display: flex;
   align-items: center;
   justify-content: center;
-}
-```
-(4) 已知高度的块级元素垂直居中
-html代码:
-```html
-<div class="parent">
-  <div class="child">
-    <!--.child的高度已知,父元素高度已知-->
-    sddvsds dfvsdvds
-  </div>
-</div>
-```
-css代码:
-```css
-#parent {
-  height: 300px;
-}
-#child {
-  height: 40px;
-  margin-top: 130px; /* 这个只为父元素的高度减去这个元素的高度除以二计算得到的 */
-  border: 1px solid #ccc;
 }
 ```
