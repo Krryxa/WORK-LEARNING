@@ -1,7 +1,7 @@
 # 数组去重
 
 ## 单数组去重
-1. filter + indexOf()
+1. filter + indexOf() 推荐
 ```js
 let arr = [1, 'a', 'a', 'b', 'd', 'e', 'e', 1, 0, 2, 2, 3];
 function unique (arr) {
@@ -36,7 +36,7 @@ function unique(arr){
 console.log(unique(arr)); // [1, "a", "b", "d", "e", 0, 2, 3]
 ```
 
-4. Set() + Array.from
+4. Set() + Array.from 推荐
 ```js
 let arr = [1, 'a', 'a', 'b', 'd', 'e', 'e', 1, 0, 2, 2, 3];
 function unique(arr){
