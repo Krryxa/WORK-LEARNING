@@ -54,4 +54,4 @@
 
 4. Last-Modified 与 ETag 是可以一起使用的，服务器会优先验证 ETag，一致的情况下，才会继续比对 Last-Modified，最后才决定是否返回 304
 
-- 详细请看这篇博客：[https://www.cnblogs.com/ainyi/p/8931238.html](https://www.cnblogs.com/ainyi/p/8931238.html)
+- 详细请看这篇博客：[https://ainyi.com/#/35](https://ainyi.com/#/35)
