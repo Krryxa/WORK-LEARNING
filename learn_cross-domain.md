@@ -117,9 +117,9 @@ proxyTable: {
 ```
 '/api' 为匹配项，target 为被请求的地址
 
-以上代码表示：只要是http://www.ainyi.com/api的接口，都将被本地8080端口的请求代理：
+以上代码表示：只要是 http://www.ainyi.com/api 的接口，都将被本地8080端口的请求代理：
 > http://localhost:8080/api ===> http://www.ainyi.com/api
 
-也就是说，想请求接口http://www.ainyi.com/api，就是通过http://localhost:8080/api代理访问，就不会产生跨域。
+也就是说，想请求接口 http://www.ainyi.com/api，就是通过 http://localhost:8080/api 代理访问，就不会产生跨域。
 
 这样就不需要在axios配置axios.defaults.baseURL，所有接口都由本地代理了
