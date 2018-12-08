@@ -1,5 +1,5 @@
 # WORK-LEARNING
 
-## wellcome！
+## wellcome
 
-### This is My experience and summary in working and learning
+This is My experience and summary in working and learning
