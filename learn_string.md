@@ -4,7 +4,7 @@
 ```
 constructor	返回创建字符串属性的函数
 length	    返回字符串的长度
-prototype	允许您向对象添加属性和方法
+prototype   允许您向对象添加属性和方法
 ```
 
 ## 字符串方法
