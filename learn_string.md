@@ -128,7 +128,7 @@ let n = str.substr(-3); // 打印：ld!
 
 ## JS判断字符串长度（英文占1个字符，中文汉字占2个字符）
 ```javascript
-// 方法一：
+// 方法一
 // Unicode 编码
 String.prototype.gblen = () => {    
   let len = 0;    
@@ -142,7 +142,7 @@ String.prototype.gblen = () => {
   return len;    
 }
 
-// 方法二：
+// 方法二
 // Unicode 编码
 let strlen = str => {
   let len = 0;  
@@ -159,7 +159,7 @@ let strlen = str => {
   return len;  
 }  
 
-// 方法三：
+// 方法三
 // Unicode 编码
 let jmz = {};  
 jmz.GetLength = str => {
@@ -175,7 +175,7 @@ jmz.GetLength = str => {
   return realLength;  
 };  
 
-// 方法四：
+// 方法四
 // Unicode 编码
 let l = str.length;   
 let blen = 0;   
@@ -186,7 +186,7 @@ for (i = 0; i < l; i++) {
   blen++;   
 }
 
-// 方法五：
+// 方法五
 // 把双字节的替换成两个单字节的然后再获得长度
 getBLen = str => {  
   if (str != null) {
