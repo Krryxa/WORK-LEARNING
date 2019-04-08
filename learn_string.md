@@ -13,7 +13,7 @@ prototype   允许您向对象添加属性和方法
 str.charAt(index) // 返回指定位置的字符
 str.charCodeAt(index) // 返回指定位置的字符的 Unicode 编码
 str.concat(string1, string2, ..., stringX) // 链接两个或多个字符串
-// 以下两个方法第二个参数都可选，若指定start，则从该位置开始向后或向前检索
+// 以下两个方法第二个参数都可选，若指定 start，则从该位置开始向后或向前检索
 str.indexOf(value, start) // 返回某个指定的字符串值在字符串中首次出现的位置（区分大小写）
 str.lastIndexOf(value, start) // 返回一个指定的字符串值最后出现的位置
 str.match(regexp) // 在字符串内检索指定的值，或找到一个或多个正则表达式的匹配
