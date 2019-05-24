@@ -11,7 +11,25 @@ function unique (arr) {
 console.log(unique(arr)); // [1, "a", "b", "d", "e", 0, 2, 3]
 ```
 
-2. filter + Map()
+2. Set() + Array.from 推荐
+```js
+let arr = [1, 'a', 'a', 'b', 'd', 'e', 'e', 1, 0, 2, 2, 3];
+function unique(arr){
+  return Array.from(new Set(arr));
+}
+console.log(unique(arr)); // [1, "a", "b", "d", "e", 0, 2, 3]
+```
+
+3. Set() + [...()] 推荐
+```js
+let arr = [1, 'a', 'a', 'b', 'd', 'e', 'e', 1, 0, 2, 2, 3];
+function unique(arr){
+  return [...(new Set(arr))];
+}
+console.log(unique(arr)); // [1, "a", "b", "d", "e", 0, 2, 3]
+```
+
+4. filter + Map()
 Map() 对象的 has 方法是：如果映射包含指定元素，则返回 true，检测的是key值
 ```js
 let arr = [1, 'a', 'a', 'b', 'd', 'e', 'e', 1, 0, 2, 2, 3];
@@ -22,7 +40,7 @@ function unique(arr){
 console.log(unique(arr)); // [1, "a", "b", "d", "e", 0, 2, 3]
 ```
 
-3. forEach + indexOf() + 新数组
+5. forEach + indexOf() + 新数组
 ```js
 let arr = [1, 'a', 'a', 'b', 'd', 'e', 'e', 1, 0, 2, 2, 3];
 function unique(arr){
@@ -33,24 +51,6 @@ function unique(arr){
     }
   });
   return newArr;
-}
-console.log(unique(arr)); // [1, "a", "b", "d", "e", 0, 2, 3]
-```
-
-4. Set() + Array.from 推荐
-```js
-let arr = [1, 'a', 'a', 'b', 'd', 'e', 'e', 1, 0, 2, 2, 3];
-function unique(arr){
-  return Array.from(new Set(arr));
-}
-console.log(unique(arr)); // [1, "a", "b", "d", "e", 0, 2, 3]
-```
-
-5. Set() + [...()]
-```js
-let arr = [1, 'a', 'a', 'b', 'd', 'e', 'e', 1, 0, 2, 2, 3];
-function unique(arr){
-  return [...(new Set(arr))];
 }
 console.log(unique(arr)); // [1, "a", "b", "d", "e", 0, 2, 3]
 ```
