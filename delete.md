@@ -48,7 +48,7 @@ delete obj1; // false 全局显示的变量，不能被删除
 function fn(){
   var z = 10;
   delete z; // false
-    // z 是局部变量，不能被删除，delete只能删除对象的属性
+  // z 是局部变量，不能被删除，delete只能删除对象的属性
 }
 
 delete fn; //false
