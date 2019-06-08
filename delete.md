@@ -83,7 +83,7 @@ delete arr[2];
 
 console.log(arr.length); // 6
 console.log(arr[2]); // undefiend
-consoel.log(arr); //[ 1, 3, , 6, 73, 2 ]
+consoel.log(arr); // [ 1, 3, , 6, 73, 2 ]
 
 // 在forEach 循环中删除元素，不会影响循环结果
 let arr = [1,3,5,21,3,4,53,21,5,2];
