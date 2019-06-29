@@ -18,9 +18,9 @@ class EventEmitter {
 }
 ```
 
-- this.listeners 使用 Map 类型保存不同事件对应的监听者的处理函数。 
-- addListener 和 removeListener 分别是添加和移除监听函数。 
-- emit 出发某类事件，并用 args 传递数据。 
+- this.listeners 使用 Map 类型保存不同事件对应的监听者的处理函数
+- addListener 和 removeListener 分别是添加和移除监听函数
+- emit 出发某类事件，并用 args 传递数据
 
 - 下面是具体实现：
 ```js
