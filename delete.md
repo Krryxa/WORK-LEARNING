@@ -74,7 +74,8 @@ console.log(f.name); // undefined
 ```
 
 4. 删除数组元素
-- 当删除数组元素时，数组的长度并不会变小。
+- 当删除数组元素时，数组的长度并不会变小
+
 ```javascript
 var arr = [1,3,4,6,73,2];
 console.log(arr.length); // 6
