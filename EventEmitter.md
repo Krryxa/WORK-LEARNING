@@ -23,6 +23,7 @@ class EventEmitter {
 - emit 出发某类事件，并用 args 传递数据
 
 - 下面是具体实现：
+
 ```js
 class EventEmitter {
   constructor() {
