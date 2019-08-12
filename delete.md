@@ -5,6 +5,7 @@
 > delete expresson
 
 - express 是一个对象的引用，例如
+
 ```javascript
 delete object.property
 delete object['property']
@@ -17,6 +18,7 @@ delete object['property']
 
 ## 作用
 1. 可以删除隐式全局变量，但不可删除显示全局变量，隐式全局变量其实是 global 对象 window 的属性
+
 ```javascript
 x = 10; // 未加关键字，属于全局变量 Window 的属性
 let y = 20; // 只是定义的变量，没有挂载到 window
@@ -28,6 +30,7 @@ delete z; // false 不能删除
 ```
 
 2. 内置对象的内置属性不能被删除，用户自定义的属性可以被删除
+
 ```JavaScript
 obj = { // 未加关键字，属于全局变量 Window 的属性
   h: 10
@@ -55,7 +58,8 @@ delete fn; //false
 // fn 相当于是一个匿名变量，所以也不能被删除。
 ```
 
-3. 不能删除一个对象从原型继承而来的属性，但是可以直接从原型上删掉它；
+3. 不能删除一个对象从原型继承而来的属性，但是可以直接从原型上删掉它
+
 ```javascript
 function foo(){}
 foo.prototype.name = 'zhangsan';
