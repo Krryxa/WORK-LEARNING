@@ -1,6 +1,7 @@
 # DOM 和 BOM 详解
 
 - javascript 组成
+
 ![](https://raw.githubusercontent.com/Krryxa/WORK-LEARNING/master/images/p_15.jpg)
 
 1. DOM 是 W3C 的标准； [所有浏览器公共遵守的标准]
