@@ -1,7 +1,7 @@
 # eslink
 
 - .eslintrc.js 文件中：
-``` JavaScript
+```JavaScript
 // add your custom rules here
 rules: {
 // 必须要分号结尾
