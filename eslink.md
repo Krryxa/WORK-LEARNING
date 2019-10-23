@@ -1,6 +1,7 @@
 # eslink
 
 - .eslintrc.js 文件中：
+
 ```JavaScript
 // add your custom rules here
 rules: {
