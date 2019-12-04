@@ -1,23 +1,27 @@
 # 面试 - 未知点(3)
 
-[面试 - 未知点(1)](https://github.com/Krryxa/WORK-LEARNING/issues/26)<br>
-[面试 - 未知点(2)](https://github.com/Krryxa/WORK-LEARNING/issues/35)<br>
-[面试 - 未知点(3)](https://github.com/Krryxa/WORK-LEARNING/issues/37)<br>
+[面试 - 未知点(1)](https://github.com/Krryxa/WORK-LEARNING/issues/26)
+
+[面试 - 未知点(2)](https://github.com/Krryxa/WORK-LEARNING/issues/35)
+
+[面试 - 未知点(3)](https://github.com/Krryxa/WORK-LEARNING/issues/37)
+
 [面试 - 未知点(4)](https://github.com/Krryxa/WORK-LEARNING/issues/39)
 
 
 ## null、undefined
-> undefined：表示一个变量最原始的状态，而非人为操作的结果<br>
-> null：表示一个对象被人为的重置为空对象，而非一个变量最原始的状态
+undefined：表示一个变量最原始的状态，而非人为操作的结果
 
-《JavaScript高级程序设计》一书 53 页：由于相等和不相等操作符存在类型转换问题，而为了保持代码中数据类型的完整性，我们推荐使用全等和不全等操作符
+null：表示一个对象被人为的重置为空对象，而非一个变量最原始的状态
+
+>《JavaScript高级程序设计》一书 53 页：由于相等和不相等操作符存在类型转换问题，而为了保持代码中数据类型的完整性，我们推荐使用全等和不全等操作符
 
 记住：null == undefined 会返回 true；null === undefined 会返回 false；
 
 Undefined 和 Null 是 Javascript 中两种特殊的原始数据类型(Primary Type)，它们都只有一个值，分别对应 undefined 和 null ，这两种不同类型的值，即有着不同的语义和场景，但又表现出较为相似的行为：
 
 ### undefined
->> undefined 的字面意思就是未定义的值，这个值的语义是，希望表示一个变量最原始的状态，而非人为操作的结果。这种原始状态会在以下 4 种场景中出现：
+undefined 的字面意思就是未定义的值，这个值的语义是，希望表示一个变量最原始的状态，而非人为操作的结果。这种原始状态会在以下 4 种场景中出现：
 
 【1】声明了一个变量，但没有赋值
 ```javascript
