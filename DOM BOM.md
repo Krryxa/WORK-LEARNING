@@ -113,4 +113,5 @@ document.location.reload(URL) // 打开新的网页
 ```
 
 ### Document 对象
+
 - 详情看 [https://www.cnblogs.com/ainyi/p/8794159.html](https://www.cnblogs.com/ainyi/p/8794159.html)
