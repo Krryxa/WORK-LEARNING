@@ -76,7 +76,8 @@ for (let key in oo) {
 ---
 7. 介绍一下闭包和闭包常用场景
 - 详见：[https://github.com/Krryxa/WORK-LEARNING/blob/master/closure.md](https://github.com/Krryxa/WORK-LEARNING/blob/master/closure.md)
-> 背景例子：计数器的困境：<br><br>
+
+背景例子：计数器的困境：<br><br>
 设想下如果你设置一个计数器，且该计数器在所有函数中都是可用的。<br>
 你可以使用全局变量定义计数器，再定义函数 add() 设置计数器递增<br>
 但问题来了，页面上的任何脚本都能改变计数器，即便没有调用 add() 函数<br><br>
