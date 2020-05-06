@@ -97,7 +97,7 @@ window.onload = function(){
   <li>4444444</li>
 </ul>
 ```
-- 有4个li，里面的内容各不相同，点击li，event对象肯定是当前点击的对象，怎么指定到li上，利用循环，不是li，就指向上一级target = target.parentNode，直到找到li为止，找到就break循环。
+有4个li，里面的内容各不相同，点击li，event对象肯定是当前点击的对象，怎么指定到li上，利用循环，不是li，就指向上一级target = target.parentNode，直到找到li为止，找到就break循环。
 
 ```javascript
 var oUl = document.getElementById('test')
