@@ -107,6 +107,7 @@ let add = ( () => {
   let counter = 0;
   return () => {return counter += 1;}
 })();
+
 // 函数自执行，一开始定义的时候，自我调用了一次，初始化 counter = 0，
 // 并且返回一个函数() => {return counter += 1;} 给 add 变量，可调用
 
